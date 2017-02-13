@@ -60,7 +60,7 @@ Change the password for the user postgres (or any other you have)
 configure the pgadmin3 connection with the user and the password that you create
 
 
-![Screenshot at 2017-02-13 09:50:29.png](https://bitbucket.org/repo/jqbXE8/images/3210628603-Screenshot%20at%202017-02-13%2009:50:29.png)
+![pgadmin.png](https://bitbucket.org/repo/jqbXE8/images/663939298-pgadmin.png)
 
 
 ### Execute the project
