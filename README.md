@@ -25,12 +25,29 @@ Verify the version
 
 
 
-### Clone the Repo
+### Fork and Clone
+
+Create a fork of the project 
+
 
 You can clone the repo wherever you want but we recomment to install it inside the enviroment folder (sky-env)
-	
-You can clone the repo Using SSH `git clone git@bitbucket.org:nezara/skywalker.git` (you need to configure the ssh key) or you can use HTTPS `git clone https://andresfaq@bitbucket.org/nezara/skywalker.git`
 
+
+Origin remote 
+
+This remote is the principal repository, we wont push directly to this repo, we will create pull request to this repo using our forks
+	
+You can clone the repo Using SSH `git clone git@bitbucket.org:nezara/skywalker.git` (you need to configure the ssh key) 
+
+Fork remote
+
+This remote is the fork repository, in this fork you should do the necessary changes, create a commit, and push the branch to this fork, then you should create a pull request against the integration branch in the principal repo.
+
+you can add a remote in your local machine using this commmand
+
+`git remote add fork git@bitbucket.org:USERNAME/skywalker.git`
+
+ 
 
 ### Installing Django dependencies
 
