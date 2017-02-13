@@ -33,13 +33,13 @@ Create a fork of the project
 You can clone the repo wherever you want but we recomment to install it inside the enviroment folder (sky-env)
 
 
-Origin remote 
+**Origin remote** 
 
 This remote is the principal repository, we wont push directly to this repo, we will create pull request to this repo using our forks
 	
 You can clone the repo Using SSH `git clone git@bitbucket.org:nezara/skywalker.git` (you need to configure the ssh key) 
 
-Fork remote
+**Fork remote**
 
 This remote is the fork repository, in this fork you should do the necessary changes, create a commit, and push the branch to this fork, then you should create a pull request against the integration branch in the principal repo.
 
