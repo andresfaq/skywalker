@@ -47,7 +47,7 @@ Activate the sky-env enviroment, go to the repo folder and execute
 
 create a database named skywalker
 
-sudo -u postgres createdb skywalker
+`sudo -u postgres createdb skywalker`
 
 Change the password for the user postgres (or any other you have)
 
@@ -61,6 +61,8 @@ configure the pgadmin3 connection with the user and the password that you create
 
 
 ![pgadmin.png](https://bitbucket.org/repo/jqbXE8/images/663939298-pgadmin.png)
+
+### Configure the settings
 
 
 ### Execute the project
