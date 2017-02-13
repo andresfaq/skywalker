@@ -42,3 +42,7 @@ Activate the sky-env enviroment, go to the repo folder and execute
 ### Database Configuration
 
 (In progress ..)
+
+### Execute the project
+
+python manage.py runserver --settings=skywalker.settings.dev
