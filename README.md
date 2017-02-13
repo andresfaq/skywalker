@@ -45,4 +45,8 @@ Activate the sky-env enviroment, go to the repo folder and execute
 
 ### Execute the project
 
-python manage.py runserver --settings=skywalker.settings.dev
+`python manage.py makemigration --settings=skywalker.settings.dev`
+
+`python manage.py migrate_schemas --shared --settings=skywalker.settings.dev`
+
+`python manage.py runserver --settings=skywalker.settings.dev`
