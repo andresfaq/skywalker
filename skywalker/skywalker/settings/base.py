@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 SHARED_APPS = [
     'tenant_schemas',
-    'customers',
+    'tenants',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,16 +48,7 @@ TENANT_APPS = [
 
 ]
 
-INSTALLED_APPS = [
-    'tenant_schemas',
-    'customers',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE = [
     'tenant_schemas.middleware.DefaultTenantMiddleware',
@@ -91,7 +82,7 @@ TEMPLATES = [
 
 
 
-TENANT_MODEL = "customers.Client"
+TENANT_MODEL = "tenants.Tenant"
 
 WSGI_APPLICATION = 'skywalker.wsgi.application'
 
