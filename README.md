@@ -89,3 +89,8 @@ configure the pgadmin3 connection with the user and the password that you create
 `python manage.py migrate_schemas --shared --settings=skywalker.settings.dev`
 
 `python manage.py runserver --settings=skywalker.settings.dev`
+
+
+## Git Workflow
+
+![Untitled Diagram.png](https://bitbucket.org/repo/MyGzrq/images/1091835688-Untitled%20Diagram.png)
