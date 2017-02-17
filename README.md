@@ -23,7 +23,9 @@ Here you will be working in your code, you can do whatever you want, just rememb
 
 This project run in **(ubuntu 16.04)**
 
-### Install Dependencies
+### Update and Install Dependencies
+
+`sudo apt-get update`
 
 `sudo apt-get install git python-virtualenv libpq-dev python-dev python3.5-dev libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk postgresql postgresql-contrib`
 
