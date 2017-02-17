@@ -48,11 +48,11 @@ TENANT_APPS = [
 
 ]
 
-INSTALLED_APPS = list(set(TENANT_APPS + SHARED_APPS))
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE = [
-    'tenant_schemas.middleware.DefaultTenantMiddleware',
-    #'tenant_schemas.middleware.TenantMiddleware', # Tenant
+    'tenant_schemas.middleware.DefaultTenantMiddleware', # To allow acces public tenant
+    #'tenant_schemas.middleware.TenantMiddleware', # Raise 404 if the hostname is not a valid Tenant 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
