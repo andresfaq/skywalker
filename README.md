@@ -113,9 +113,19 @@ This is the content of each file:
 
 ### Execute the project
 
+Create the migrations files
+
 `python manage.py makemigration --settings=skywalker.settings.dev`
 
+Create the tables
+
 `python manage.py migrate_schemas --shared --settings=skywalker.settings.dev`
+
+create-tenants.py will create some example tenants (public and a tenant named 'tenant')
+
+`python manage.py shell << create-tenants.py --settings=skywalker.settings.dev`
+
+run the development server
 
 `python manage.py runserver --settings=skywalker.settings.dev`
 
