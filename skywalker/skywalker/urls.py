@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^console/', include('baseapp.urls')),
+    url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
 ]
