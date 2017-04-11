@@ -1,43 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
 
-User.add_to_class('address', models.CharField(max_length=100, null=True))
-User.add_to_class('birth_date', models.DateField(null=True))
-User.add_to_class('phone', models.PositiveIntegerField(null=True))
-User.add_to_class('cellphone', models.PositiveIntegerField(null=True))
-User.add_to_class('dni', models.PositiveIntegerField(null=True))
-
-# Create your models here.
-
-# Employee Class
-class Employee(User):
-    class Meta:
-        verbose_name = 'Employee'
-        verbose_name_plural = 'Employees'
-
-    ADMINISTRATOR = 'AD'
-    EMPLOYEE = 'EM'
-
-    EMPLOYEE_TYPE_CHOICES = (
-        (ADMINISTRATOR, 'Administrator'),
-        (EMPLOYEE, 'Employee'),
-    )
-
-    id_employee = models.AutoField(primary_key=True)
-    salary = models.PositiveIntegerField(null=True)
-    employee_type = models.CharField(
-        max_length=2,
-        choices=EMPLOYEE_TYPE_CHOICES,
-        default=EMPLOYEE,
-    )
-
-# Client Class
-class Client(User):
-    class Meta:
-        verbose_name = 'Client'
-        verbose_name_plural = 'Clients'
-
-    id_client = models.AutoField(primary_key=True)
+from accounts.models import Employee, Client
 
 # Ingredient Class
 class Ingredient(models.Model):

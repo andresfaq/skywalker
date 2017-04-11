@@ -23,7 +23,8 @@ SHARED_APPS = [
     'tenant_schemas',
     'tenants',
     'landing',
-    'django.contrib.admin',
+    'accounts',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -32,10 +33,21 @@ SHARED_APPS = [
 ]
 
 TENANT_APPS = [
+    'django.contrib.auth',
+    'django.contrib.sites',
 
     'django.contrib.contenttypes',
+    
     # my apps
+    'accounts',
     'baseapp',
+
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # # 'allauth.socialaccount.providers.facebook',
+    # # 'allauth.socialaccount.providers.google',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -113,6 +125,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of 'allauth'
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 'allauth' specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -148,3 +167,12 @@ LOGIN_URL = reverse_lazy('login')
 
 # Media files path
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+
+SITE_ID = 1
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'

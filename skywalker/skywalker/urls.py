@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^console/', include('baseapp.urls')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
+    url(r'^accounts', include('accounts.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
