@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^console/', include('baseapp.urls')),
+    url(r'^pizza/', include('pizza.urls', namespace='pizza')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
     url(r'^accounts', include('accounts.urls')),

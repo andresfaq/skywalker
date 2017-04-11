@@ -10,6 +10,8 @@ class Ingredient(models.Model):
     
     name = models.CharField(max_length=200, null=False, blank=False)
     description = models.CharField(max_length=2000, null=True, blank=True)
+    price = models.PositiveIntegerField(null=True)
+
 
 # Pizza base Class
 class PizzaBase(models.Model):
