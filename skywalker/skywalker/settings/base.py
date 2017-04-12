@@ -23,13 +23,16 @@ SHARED_APPS = [
     'tenant_schemas',
     'tenants',
     'landing',
-    'accounts',
+    # 'accounts',
     # 'django.contrib.admin',
-    'django.contrib.auth',
+    # 'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third-party
+    'crispy_forms',
 ]
 
 TENANT_APPS = [
@@ -43,7 +46,7 @@ TENANT_APPS = [
     'baseapp',
     'pizza',
 
-    # django-allauth
+    # django-allaut
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -177,3 +180,4 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
