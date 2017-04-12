@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^pizza/', include('pizza.urls', namespace='pizza')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
-    url(r'^accounts', include('accounts.urls')),
-    url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('allauth.urls', namespace='allauth')),
 ]
