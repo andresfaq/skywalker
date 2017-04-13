@@ -5,21 +5,6 @@
 {% block content %}
 
 <!-- <div class="row"> -->
-<style>
-/*
-  Bryan:
-  Lo siento por esto pero pelee mucho con los estilos de la plantilla y el
-  formulario que genera django-crispy-forms, esta fue la única solución.
-  Pendiente: Crear una hoja de estilos aparte
-*/
-.smart-form .form-group {
-  margin-bottom: 15px !important;
-}
-.smart-form .button {
-  margin: 10px 10px;
-}
-</style>
-
 <section id="widget-grid" class="">
 
   <!-- NEW COL START -->
@@ -30,14 +15,13 @@
       <header role="heading">
         <div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
         <span class="widget-icon"> </span>
-        <!-- Debe ir entre <h2> pero "algo" lo borra -->
-        <h4> {{ form_title }} </h4>
+        <h2> {{ form_title }} </h2>
         <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
       </header>
 
       <div role="content">
-        <div class="widget-body no-padding">
-          <form method="post"  class="smart-form">
+        <div class="widget-body ">  <!-- no-padding -->
+          <form method="post"  class=""> <!-- smart-form -->
             {% csrf_token %}
             {% crispy form %}
           </form>
