@@ -1,11 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from django.contrib.auth import logout
-# Create your views here.
-
-# Bryan: Not used
-class DashboardView(TemplateView):
-    template_name = "base.html"
 
 
 class IndexView(View):

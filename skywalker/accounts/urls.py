@@ -7,9 +7,6 @@ urlpatterns = [
     url(r'^login/$', views.login_view, name='login'),
     url(r'^logout/$', logout, {'next_page':'/'}, name='logout'),
 
-    # url(r'^logout/$', 'django.contrib.auth.views.logout',
-    # {'next_page': '/logged_out/'})
-
     # Users
     url(r'^users/$', views.user_list, name='user_list'),
     url(r'^user/new/$', views.user_new, name='user_new'),

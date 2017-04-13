@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# from landing.views import HomeView
 from baseapp.views import index
 
 urlpatterns = [
-    # url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^console/', include('baseapp.urls')),
+    # url(r'^console/', include('baseapp.urls')),
     url(r'^pizza/', include('pizza.urls', namespace='pizza')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
