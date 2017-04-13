@@ -1,3 +1,7 @@
+"""
+author: Bryan Tabarez
+"""
+
 from django.conf import settings
 from django.contrib.auth.models import (AbstractBaseUser, UserManager,
     PermissionsMixin)
@@ -5,8 +9,9 @@ from django.db import models
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    # Standard fields
-    username = models.CharField(max_length=150, blank=True)
+    # Standard fields: username, first_name, last_name, email
+    # is_staff, is_active, is_superuser, last_login, date_joined
+    # username = models.CharField(max_length=150, blank=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField(unique=True)
@@ -39,8 +44,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Employee(models.Model):
-    ADMINISTRATOR = 'AD'
-    EMPLOYEE = 'EM'
+    ADMINISTRATOR = 'administrator'
+    EMPLOYEE = 'employee'
 
     EMPLOYEE_TYPE_CHOICES = (
         (ADMINISTRATOR, 'Administrator'),
@@ -49,7 +54,7 @@ class Employee(models.Model):
 
     salary = models.PositiveIntegerField(null=True)
     employee_type = models.CharField(
-        max_length=2,
+        max_length=15,
         choices=EMPLOYEE_TYPE_CHOICES,
         default=EMPLOYEE,
     )
