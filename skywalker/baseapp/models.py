@@ -7,6 +7,7 @@ User.add_to_class('phone', models.PositiveIntegerField(null=True))
 User.add_to_class('cellphone', models.PositiveIntegerField(null=True))
 User.add_to_class('dni', models.PositiveIntegerField(null=True))
 
+
 # Create your models here.
 
 # Employee Class
@@ -31,6 +32,7 @@ class Employee(User):
         default=EMPLOYEE,
     )
 
+
 # Client Class
 class Client(User):
     class Meta:
@@ -39,32 +41,39 @@ class Client(User):
 
     id_client = models.AutoField(primary_key=True)
 
+
 # Ingredient Class
 class Ingredient(models.Model):
     class Meta:
         verbose_name = "Ingredient"
         verbose_name_plural = "Ingredients"
-    
+
     name = models.CharField(max_length=200, null=False, blank=False)
     description = models.CharField(max_length=2000, null=True, blank=True)
     price = models.PositiveIntegerField(null=True)
 
+    def __str__(self):
+       return self.name
 
 # Pizza base Class
 class PizzaBase(models.Model):
     class Meta:
         verbose_name = "Pizza Base"
         verbose_name_plural = "Pizzas Base"
-    
+
     name = models.CharField(max_length=100, null=False, blank=False)
     description = models.CharField(max_length=300, null=False, blank=False)
+    image = models.FileField(upload_to='upload/')
+
+    aditions = models.ManyToManyField(Ingredient)
+
 
 # Pizza Class
 class Pizza(models.Model):
     class Meta:
         verbose_name = "Pizza"
         verbose_name_plural = "Pizzas"
-    
+
     SMALL = 'SM'
     MEDIUM = 'MD'
     LARGE = 'LG'
@@ -94,8 +103,8 @@ class Order(models.Model):
     pizza = models.ForeignKey(Pizza)
     ingredients = models.ManyToManyField(
         Ingredient,
-        through = 'Extra',
-        through_fields = ('order', 'ingredient'))
+        through='Extra',
+        through_fields=('order', 'ingredient'))
     note = models.CharField(max_length=1000, null=False, blank=False)
 
 # Extra Ingredient Class
@@ -108,6 +117,7 @@ class Extra(models.Model):
     ingredient = models.ForeignKey(Ingredient)
     amount = models.PositiveIntegerField(null=True, default=1)
 
+
 # Sale Class
 class Sale(models.Model):
     class Meta:
@@ -115,4 +125,4 @@ class Sale(models.Model):
         verbose_name_plural = "Sales"
 
     salesman = models.ForeignKey(Employee)
-    orders =  models.ManyToManyField(Order)
+    orders = models.ManyToManyField(Order)
