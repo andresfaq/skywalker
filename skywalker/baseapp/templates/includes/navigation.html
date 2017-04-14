@@ -8,7 +8,7 @@
       <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
         <img src="{% static "baseapp/img/avatars/sunny.png" %}" alt="me" class="online" />
         <span>
-          john.doe
+          {{ user.email }}
         </span>
         <i class="fa fa-angle-down"></i>
       </a>
@@ -30,6 +30,15 @@
     Please note that these links work a bit different than
     traditional href="" links. See documentation for details.
     -->
+    {{ request.session.user_role }} hola mundo
+    {% if request.session.user_role  == "client" %}
+      {% include "includes/navlist_client.html" %}
+    {% elif request.session.user_role == "administrator" %}
+      {% include "includes/navlist_admin.html" %}
+    {% elif request.session.user_role == "employee" %}
+      {% include "includes/navlist_employee.html" %}
+    {% endif %}
+
     {% block nav-list %}
 		{% endblock %}
 

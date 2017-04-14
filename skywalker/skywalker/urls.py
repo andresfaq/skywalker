@@ -15,17 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from landing.views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
+from baseapp.views import index
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^console/', include('baseapp.urls')),
+    # url(r'^console/', include('baseapp.urls')),
     url(r'^pizza/', include('pizza.urls', namespace='pizza')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
+    url(r'^$', index, name='index'),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 ## Se agregan este codigo para poder acceder a la imagen de la pizza que se encuentra

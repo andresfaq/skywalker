@@ -102,50 +102,7 @@
         <!-- #NAVIGATION -->
         <!-- Left panel : Navigation area -->
         <!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->
-        {% include "navigation.html" %}
-        
-        <aside id="left-panel">
-
-          <!-- User info -->
-          <div class="login-info">
-            <span> <!-- User image size is adjusted inside CSS, it should stay as is -->
-        
-              <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                <img src="{% static "baseapp/img/avatars/sunny.png" %}" alt="me" class="online" />
-                <span>
-                  john.doe
-                </span>
-                <i class="fa fa-angle-down"></i>
-              </a>
-        
-            </span>
-          </div>
-          <!-- end user info -->
-        
-          <!-- NAVIGATION : This navigation is also responsive
-        
-          To make this navigation dynamic please make sure to link the node
-          (the reference to the nav > ul) after page load. Or the navigation
-          will not initialize.
-          -->
-        
-          <nav>
-            <!--
-            NOTE: Notice the gaps after each icon usage <i></i>..
-            Please note that these links work a bit different than
-            traditional href="" links. See documentation for details.
-            -->
-            {% block nav-list %}
-            {% endblock %}
-        
-          </nav>
-        
-          <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
-        
-        </aside>
-        
-        
-        
+        {% include "includes/navigation.html" %}     
         <!-- END NAVIGATION -->
 
         <!-- #MAIN PANEL -->
@@ -188,6 +145,20 @@
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                         <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Dashboard <span>> My Dashboard</span></h1>
                     </div>
+
+                <article class="col-sm-12">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} fade in">
+                            <button class="close" data-dismiss="alert">
+                                ×
+                            </button>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </article>
+
                 </div>
                 <div class="row">
                     {% block content %}

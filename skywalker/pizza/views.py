@@ -1,19 +1,19 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
-
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit \
-    import (
+from django.views.generic import (
+    ListView,
+    DetailView,
     CreateView,
     UpdateView,
-    DeleteView
-)
+    DeleteView)
 
-from baseapp.models \
-    import (
+from baseapp.models import (
     Ingredient,
     PizzaBase
 )
+
+from .forms import IngredientForm
+
 
 
 class IngredientList(ListView):
@@ -26,18 +26,29 @@ class IngredientDetail(DetailView):
     template_name = "ingredient/detail.html"
 
 
-class IngredientCreation(CreateView):
+class IngredientCreation(SuccessMessageMixin, CreateView):
     model = Ingredient
     success_url = reverse_lazy('pizza:ingredient_list')
-    fields = ['name', 'description', 'price']
-    template_name = "ingredient/form.html"
+    form_class = IngredientForm
+    template_name = "object/object_form.html"
+    success_message = "Ingredient create successly"
+
+    def get_context_data(self, **kwargs):
+        context = super(IngredientCreation, self).get_context_data(**kwargs)
+        context['form_title'] = "Create an ingredient"
+        return context
 
 
 class IngredientUpdate(UpdateView):
     model = Ingredient
     success_url = reverse_lazy('pizza:ingredient_list')
-    fields = ['name', 'description', 'price']
-    template_name = "ingredient/form.html"
+    form_class = IngredientForm
+    template_name = "object/object_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(IngredientUpdate, self).get_context_data(**kwargs)
+        context['form_title'] = "Create an ingredient"
+        return context
 
 
 class IngredientDelete(DeleteView):

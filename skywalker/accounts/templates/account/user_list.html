@@ -1,0 +1,39 @@
+{% extends 'layout_list.html' %}
+
+{% block new_action %}
+	<a href="{% url 'accounts:user_new' %}" class="btn btn-default">
+    <i class="fa fa-plus"></i> Create new User</a>
+{% endblock %}
+
+{% block table %}
+	<table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
+    <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Is active</th>
+      <th>Date joined</th>
+      <th width="20%" data-hide="phone,tablet" class="no-print">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in object_list %}
+      <tr>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.is_active }}</td>
+        <td>{{ user.date_joined }}</td>
+        <td class="text-align-center no-print">
+          <div class="btn-group">
+            <a class="btn btn-default" href="#"><i class="fa fa-eye"></i></a>
+            <a class="btn btn-default" href="#"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-default" href="#"><i class="fa fa-trash"></i></a>
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
