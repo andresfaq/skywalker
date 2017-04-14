@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from landing.views import HomeView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -25,3 +27,10 @@ urlpatterns = [
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
 ]
+
+## Se agregan este codigo para poder acceder a la imagen de la pizza que se encuentra
+## en el directorio media/upload
+# Django Tutorial for Beginners - 33 - Upload Files, https://www.youtube.com/watch?v=v5FWAxi5QqQ
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
