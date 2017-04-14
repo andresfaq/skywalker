@@ -4,7 +4,7 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form.name }}
+        {{ form.as_p }}
         <input class="btn bg-color-green text-white" type="submit" value="Submit"/>
     </form>
 

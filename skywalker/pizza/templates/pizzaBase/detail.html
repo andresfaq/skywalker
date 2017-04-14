@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Name</th>
+            <td>{{ pizzabase.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ pizzabase.description }}</td>
+        </tr>
+
+        <tr>
+            <th>Image</th>
+            <td><img class="img-responsive" width="400" height="300" src="{{ pizzabase.image.url }}"></td>
+        </tr>
+    </table>
+
+
+    <table class="table table-striped table-bordered">
+    <tr>Ingredientes</tr>
+        {% for adition in pizzabase.aditions.all %}
+            <tr>
+                <td>{{ adition.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
