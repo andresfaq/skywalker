@@ -1,10 +1,8 @@
 {% extends 'layout_list.html' %}
 
 {% block new_action %}
-    <a class="btn btn-default" href="{% url "pizza:ingredient_creation" %}">
-       <i class="fa fa-plus"></i> New Ingredient</a>
-    <a class="btn btn-default" href="{% url "pizza:ingredient_creation" %}">
-       <i class="fa fa-upload"></i> Upload</a>
+    <a class="btn btn-default" href="{% url "pizza:pizzabase_creation" %}">
+        <i class="fa fa-plus"></i> New Pizza Base</a>
 {% endblock %}
 
 {% block table %}
@@ -12,24 +10,22 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Price</th>
             <th>Description</th>
             <th width="20%" data-hide="phone,tablet"></th>
         </tr>
         </thead>
         <tbody>
-        {% for ingredient in object_list %}
+        {% for pizzabase in object_list %}
             <tr>
-                <td>{{ ingredient.name }}</td>
-                <td>{{ ingredient.price }}</td>
-                <td>{{ ingredient.description }}</td>
+                <td>{{ pizzabase.name }}</td>
+                <td>{{ pizzabase.description }}</td>
                 <td class="text-align-center">
                     <div class="btn-group">
-                        <a class="btn btn-default" href="{% url "pizza:ingredient_detail" ingredient.id %}"><i
+                        <a class="btn btn-default" href="{% url "pizza:pizzabase_detail" pizzabase.id %}"><i
                                 class="fa fa-eye"></i></a>
-                        <a class="btn btn-default" href="{% url "pizza:ingredient_edit" ingredient.id %}"><i
+                        <a class="btn btn-default" href="{% url "pizza:pizzabase_edit" pizzabase.id %}"><i
                                 class="fa fa-edit"></i></a>
-                        <a class="btn btn-default" href="{% url "pizza:ingredient_delete" ingredient.id %}"><i
+                        <a class="btn btn-default" href="{% url "pizza:pizzabase_delete" pizzabase.id %}"><i
                                 class="fa fa-trash"></i></a>
                     </div>
                 </td>
