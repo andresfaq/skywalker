@@ -21,7 +21,7 @@
 
       <div role="content">
         <div class="widget-body ">  <!-- no-padding -->
-          <form method="post"  class=""> <!-- smart-form -->
+          <form method="post" enctype="multipart/form-data" class=""> <!-- smart-form -->
             {% csrf_token %}
             {% crispy form %}
           </form>
