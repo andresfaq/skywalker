@@ -25,6 +25,8 @@ class PizzaBase(models.Model):
     image = models.FileField(upload_to='upload/')
     aditions = models.ManyToManyField(Ingredient)
 
+    def __str__(self):
+        return self.name
 
 # Pizza Class
 class Pizza(models.Model):
