@@ -5,6 +5,7 @@ from django import forms
 from baseapp.models import (
     Ingredient,
     PizzaBase,
+    Pizza,
 )
 
 
@@ -43,6 +44,26 @@ class PizzaBaseForm(forms.ModelForm):
             'description',
             'image',
             'aditions',
+            ButtonHolder(
+                HTML('<div class="form-actions">'),
+                Submit('Submit', 'Save', css_class='button btn-primary'),
+                HTML('</div>'),
+            )
+        )
+
+class PizzaForm(forms.ModelForm):
+    class Meta:
+        model = Pizza
+        fields = ('price', 'size', 'pizza_base')
+
+    def __init__(self, *args, **kwargs):
+        super(PizzaForm, self).__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            'size',
+            'price',
+            'pizza_base',
             ButtonHolder(
                 HTML('<div class="form-actions">'),
                 Submit('Submit', 'Save', css_class='button btn-primary'),
