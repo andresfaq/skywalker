@@ -123,7 +123,7 @@ Create the tables
 
 create-tenants.py will create some example tenants (public and a tenant named 'tenant')
 
-`python manage.py shell << create-tenants.py --settings=skywalker.settings.dev`
+`python manage.py shell < ../utilities/create-tenants.py --settings=skywalker.settings.dev`
 
 run the development server
 
