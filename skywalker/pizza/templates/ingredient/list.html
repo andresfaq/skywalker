@@ -1,8 +1,10 @@
 {% extends 'layout_list.html' %}
 
 {% block new_action %}
-    <a style=" color: white; text-decoration: none;" href="{% url "pizza:ingredient_creation" %}"
-       class="btn bg-color-green"><i class="fa fa-plus"></i> Create New Ingredient</a>
+    <a class="btn btn-default" href="{% url "pizza:ingredient_creation" %}">
+       <i class="fa fa-plus"></i> New Ingredient</a>
+    <a class="btn btn-default" href="{% url "pizza:ingredient_creation" %}">
+       <i class="fa fa-upload"></i> Upload</a>
 {% endblock %}
 
 {% block table %}

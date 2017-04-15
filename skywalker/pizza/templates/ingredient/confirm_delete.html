@@ -3,8 +3,8 @@
 {% block content %}
 
     <form method="post">{% csrf_token %}
-        ¿Estás seguro que deseas borrar el ingrediente "{{ object.name }}"?
-        <input type="submit" value="Submit"/>
+        Are you sure you want to delete the pizza base "{{ object.name }}"?
+        <input class="btn btn-danger" type="submit" value="Delete"/>
     </form>
 
 {% endblock %}
