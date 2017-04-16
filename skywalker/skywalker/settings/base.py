@@ -23,32 +23,34 @@ SHARED_APPS = [
     'tenant_schemas',
     'tenants',
     # 'accounts',
-    # 'django.contrib.admin',
-    # 'django.contrib.auth',
+    #'django.contrib.admin',   # -- > comentar de nuevo
+    #'django.contrib.auth',    # -- > comentar de nuevo
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     # third-party
-    'crispy_forms',
+    'crispy_forms',  # -- decomentar
 ]
 
 TENANT_APPS = [
+
     'django.contrib.auth',
     'django.contrib.sites',
-
     'django.contrib.contenttypes',
     
+
     # my apps
     'accounts',
     'baseapp',
     'pizza',
 
     # django-allaut
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'allauth', # -- decomentar
+    'allauth.account', # -- decomentar
+    'allauth.socialaccount', # -- decomentar
+
     # # 'allauth.socialaccount.providers.facebook',
     # # 'allauth.socialaccount.providers.google',
 ]
