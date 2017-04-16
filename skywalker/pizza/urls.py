@@ -10,6 +10,11 @@ from pizza.views import (
      PizzaBaseCreation,
      PizzaBaseUpdate,
      PizzaBaseDelete,
+     PizzaList,
+     PizzaDetail,
+     PizzaCreation,
+     PizzaUpdate,
+     PizzaDelete,
 )
 
 urlpatterns = [
@@ -24,4 +29,10 @@ urlpatterns = [
     url(r'^pizza-base/new$', PizzaBaseCreation.as_view(), name='pizzabase_creation'),
     url(r'^pizza-base/edit/(?P<pk>\d+)$', PizzaBaseUpdate.as_view(), name='pizzabase_edit'),
     url(r'^pizza-base/delete/(?P<pk>\d+)$', PizzaBaseDelete.as_view(), name='pizzabase_delete'),
+
+    url(r'^pizza/$', PizzaList.as_view(), name='pizza_list'),
+    url(r'^pizza/(?P<pk>\d+)$', PizzaDetail.as_view(), name='pizza_detail'),
+    url(r'^pizza/new$', PizzaCreation.as_view(), name='pizza_creation'),
+    url(r'^pizza/edit/(?P<pk>\d+)$', PizzaUpdate.as_view(), name='pizza_edit'),
+    url(r'^pizza/delete/(?P<pk>\d+)$', PizzaDelete.as_view(), name='pizza_delete'),
 ]
