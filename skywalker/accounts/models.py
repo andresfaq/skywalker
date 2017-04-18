@@ -11,7 +11,7 @@ from django.db import models
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Standard fields: username, first_name, last_name, email
     # is_staff, is_active, is_superuser, last_login, date_joined
-    # username = models.CharField(max_length=150, blank=True)
+    username = models.CharField(max_length=150, blank=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField(unique=True)

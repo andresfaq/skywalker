@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#clean the python cache files
+find . -name "*.pyc" -exec rm -f {} \;
