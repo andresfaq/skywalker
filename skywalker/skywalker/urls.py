@@ -27,7 +27,7 @@ urlpatterns = [
 
     url(r'^$', index, name='index'),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
-    url(r'^pedidos/',  include('pedidos.urls', namespace='pedidos')),
+    # url(r'^pedidos/',  include('pedidos.urls', namespace='pedidos')),
     url(r'^accounts/', include('allauth.urls')),
 ]
 
