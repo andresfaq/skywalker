@@ -23,11 +23,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^console/', include('baseapp.urls')),
     url(r'^pizza/', include('pizza.urls', namespace='pizza')),
+    url(r'^orders/',  include('orders.urls', namespace='orders')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
     url(r'^$', index, name='index'),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
-    # url(r'^pedidos/',  include('pedidos.urls', namespace='pedidos')),
     url(r'^accounts/', include('allauth.urls')),
 ]
 

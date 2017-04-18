@@ -32,6 +32,7 @@ SHARED_APPS = [
 
     # third-party
     'crispy_forms',  # -- decomentar
+    ## 'factory',  ## nuevo puede ser eliminado
 ]
 
 TENANT_APPS = [
@@ -45,6 +46,8 @@ TENANT_APPS = [
     'accounts',
     'baseapp',
     'pizza',
+    'orders',
+    'cargaDatos',
 
     # django-allaut
     'allauth', # -- decomentar

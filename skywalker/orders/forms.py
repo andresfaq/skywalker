@@ -3,10 +3,32 @@ from crispy_forms.layout import (Layout, Fieldset, ButtonHolder, Submit, Row,
                                  HTML, Field)
 from django import forms
 from baseapp.models import (
+    Order,
     Ingredient,
     PizzaBase,
     Pizza,
 )
+
+# FORM ORDER
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('pizza', 'ingredients', 'note')
+
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            'pizza',
+            'ingredients',
+            'note',
+            ButtonHolder(
+                HTML('<div class="form-actions">'),
+                Submit('Submit', 'Save', css_class='button btn-primary'),
+                HTML('</div>'),
+            )
+        )
 
 class IngredientForm(forms.ModelForm):
     class Meta:
@@ -29,17 +51,14 @@ class IngredientForm(forms.ModelForm):
         )
 
 class PizzaBaseForm(forms.ModelForm):
-    name = forms.CharField(label="Name",widget=forms.TextInput(attrs={'required': True,'type':"text",'class':"form-control",'placeholder':'Ingrese Nombre'}))
     class Meta:
         model = PizzaBase
         fields = ('name', 'description', 'image', 'aditions')
 
     def __init__(self, *args, **kwargs):
-
         super(PizzaBaseForm, self).__init__(*args, **kwargs)
 
         self.helper = FormHelper()
-
         self.helper.layout = Layout(
             'name',
             'description',
@@ -71,3 +90,4 @@ class PizzaForm(forms.ModelForm):
                 HTML('</div>'),
             )
         )
+

@@ -24,7 +24,6 @@ class PizzaBase(models.Model):
     description = models.CharField(max_length=300, null=False, blank=False)
     image = models.FileField(upload_to='upload/')
     aditions = models.ManyToManyField(Ingredient)
-
     def __str__(self):
         return self.name
 
@@ -53,6 +52,8 @@ class Pizza(models.Model):
         choices=PIZZA_SIZE_CHOICES,
         default=LARGE,
     )
+    def __str__(self):
+        return self.pizza_base.name
 
 # Order Class
 class Order(models.Model):
@@ -76,7 +77,6 @@ class Extra(models.Model):
     order = models.ForeignKey(Order)
     ingredient = models.ForeignKey(Ingredient)
     amount = models.PositiveIntegerField(null=True, default=1)
-
 
 # Sale Class
 class Sale(models.Model):
