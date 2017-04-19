@@ -35,6 +35,7 @@ SHARED_APPS = [
 ]
 
 TENANT_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
 
@@ -50,7 +51,7 @@ TENANT_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # # 'allauth.socialaccount.providers.facebook',
-    # # 'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
