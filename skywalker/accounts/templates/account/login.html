@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
 <html lang="en-us" id="extr-page">
@@ -14,6 +15,7 @@
 		<!-- Basic Styles -->
 		<link rel="stylesheet" type="text/css" media="screen" href="{% static "baseapp/css/bootstrap.min.css" %}">
 		<link rel="stylesheet" type="text/css" media="screen" href="{% static "baseapp/css/font-awesome.min.css" %}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static "baseapp/css/bootstrap-social.css" %}">
 
 		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
 		<link rel="stylesheet" type="text/css" media="screen" href="{% static "baseapp/css/smartadmin-production-plugins.min.css" %}">
@@ -168,7 +170,7 @@
 
 								<div class="row" style="margin-bottom: 10px;">
 									<div class="col-md-12">
-									    <a href="#" title="Google" class="btn btn-block btn-social btn-lg btn-google">
+									    <a href="{% provider_login_url 'google' process='login' %}" title="Google" class="btn btn-block btn-social btn-lg btn-google">
 									        <i class="fa fa-google"></i> Sign in with Google
 									    </a>
 									</div>
