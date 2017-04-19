@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from baseapp.views import index
+from accounts.views import login_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
 
     url(r'^$', index, name='index'),
+    url(r'^login/$', login_view, name='login'),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^accounts/', include('allauth.urls')),
 ]

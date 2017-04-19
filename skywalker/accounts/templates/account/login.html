@@ -1,9 +1,10 @@
 {% load static %}
 
-<html lang="en-us">
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page">
 	<head>
 		<meta charset="utf-8">
-		<title> SmartAdmin </title>
+		<title> Login </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 
@@ -57,7 +58,7 @@
 				<span id="logo"> <img src="{% static "baseapp/img/logo.png" %}" alt="SmartAdmin"> </span>
 			</div>
 
-			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Need an account?</span> <a href="register.html" class="btn btn-danger">Create account</a> </span>
+			<span id="extr-page-header-space"> <span class="hidden-mobile hidden-xs">Need an account?</span> <a href="{% url 'account_signup' %}" class="btn btn-danger">Create account</a> </span>
 
 		</header>
 
@@ -156,23 +157,29 @@
 						
 						<h5 class="text-center"> - Or sign in using -</h5>
 															
-							<ul class="list-inline text-center">
-								<li>
-									<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-								</li>
-							</ul>
+							<div class="social-box">
+								<div class="row" style="margin-bottom: 10px;">
+								    <div class="col-md-12">
+								        <a href="#" title="Facebook" class="btn btn-block btn-social btn-lg btn-facebook">
+								            <i class="fa fa-facebook"></i> Sign in with Facebook
+								        </a>
+								    </div>
+								</div>
+
+								<div class="row" style="margin-bottom: 10px;">
+									<div class="col-md-12">
+									    <a href="#" title="Google" class="btn btn-block btn-social btn-lg btn-google">
+									        <i class="fa fa-google"></i> Sign in with Google
+									    </a>
+									</div>
+								</div>
+
+							</div>
 						
 					</div>
 				</div>
 			</div>
 
-		</div>
 
 		<!--================================================== -->	
 
