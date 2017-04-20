@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from orders.views import (
+    PizzaBaseproductsViewList,
     OrderList,
     OrderCreation,
     OrderDelete,
@@ -29,12 +30,13 @@ urlpatterns = [
     url(r'^ingredient/new$', IngredientCreation.as_view(), name='ingredient_creation'),
     url(r'^ingredient/edit/(?P<pk>\d+)$', IngredientUpdate.as_view(), name='ingredient_edit'),
     url(r'^ingredient/delete/(?P<pk>\d+)$', IngredientDelete.as_view(), name='ingredient_delete'),
-
-    url(r'^order/$',                   OrderList.as_view(),       name='order_list'),
-    url(r'^order/new$',                OrderCreation.as_view(),   name='order_creation'),
-    url(r'^order/delete/(?P<pk>\d+)$', OrderDelete.as_view(),     name='order_delete'),
-    url(r'^order/edit/(?P<pk>\d+)$',   OrderUpdate.as_view(),     name='order_edit'),
-    url(r'^order/(?P<pk>\d+)$',        OrderDetail.as_view(),     name='order_detail'),
+    #PizzaBaseproductsViewList
+    url(r'^PizzaBaseproductsView/$',   PizzaBaseproductsViewList.as_view(), name='PizzaBaseproductsView_list'),
+    url(r'^order/$',                   OrderList.as_view(),                 name='order_list'),
+    url(r'^order/new$',                OrderCreation.as_view(),             name='order_creation'),
+    url(r'^order/delete/(?P<pk>\d+)$', OrderDelete.as_view(),               name='order_delete'),
+    url(r'^order/edit/(?P<pk>\d+)$',   OrderUpdate.as_view(),               name='order_edit'),
+    url(r'^order/(?P<pk>\d+)$',        OrderDetail.as_view(),               name='order_detail'),
 
 
     url(r'^pizza-base-list/$', PizzaBaseList.as_view(), name='pizzabase_list'),

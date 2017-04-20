@@ -24,6 +24,12 @@ from .forms import (
 )
 
 # ENTITY ORDER
+#products-view
+class PizzaBaseproductsViewList(TitleContentPageMixin, ListView):
+    model = PizzaBase
+    template_name = "orders/products-view.html"
+    title_content = "orders"
+
 class OrderList(TitleContentPageMixin, ListView):
     model = Order
     template_name = "orders/list.html"
@@ -112,9 +118,9 @@ class IngredientDelete(TitleContentPageMixin, DeleteView):
 
 # ENTITY PIZZA BASE
 class PizzaBaseList(TitleContentPageMixin,ListView):
-    model = PizzaBase
+    model = Pizza
     template_name = "orders/list_1.html"
-    title_content = "Base Pizzas"
+    title_content = "Pizza List"
 
 class PizzaBaseDetail(TitleContentPageMixin, DetailView):
     model = PizzaBase

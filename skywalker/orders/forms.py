@@ -31,6 +31,7 @@ class OrderForm(forms.ModelForm):
         )
 
 class IngredientForm(forms.ModelForm):
+
     class Meta:
         model = Ingredient
         fields = ('name', 'description', 'price')
