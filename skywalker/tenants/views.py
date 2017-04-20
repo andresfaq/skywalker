@@ -9,6 +9,7 @@ from django.views.generic.edit import (
 )
 
 from .models import Tenant
+from .forms import TenantForm
 
 # Create your views here.
 class TenantList(ListView):
@@ -22,20 +23,39 @@ class TenantList(ListView):
 
 class TenantDetail(DetailView):
     model = Tenant
+    extra_data = {}
+    def get_context_data(self, **kwargs):
+        context = super(TenantDetail, self).get_context_data(**kwargs)
+        context.update(self.extra_data)
+        return context
 
 
 class TenantCreation(CreateView):
     model = Tenant
-    success_url = reverse_lazy('Tenants:list')
-    fields = ['name', 'paid_until', 'on_trial']
+    success_url = reverse_lazy('tenants:list')
+    form_class = TenantForm
+    extra_data = {}
+    def get_context_data(self, **kwargs):
+        context = super(TenantCreation, self).get_context_data(**kwargs)
+        context.update(self.extra_data)
+        return context
 
 
 class TenantUpdate(UpdateView):
     model = Tenant
-    success_url = reverse_lazy('Tenants:list')
-    fields = ['name', 'paid_until', 'on_trial']
-
+    success_url = reverse_lazy('tenants:list')
+    form_class = TenantForm
+    extra_data = {}
+    def get_context_data(self, **kwargs):
+        context = super(TenantUpdate, self).get_context_data(**kwargs)
+        context.update(self.extra_data)
+        return context
 
 class TenantDelete(DeleteView):
     model = Tenant
-    success_url = reverse_lazy('Tenants:list')
+    success_url = reverse_lazy('tenants:list')
+    extra_data = {}
+    def get_context_data(self, **kwargs):
+        context = super(TenantDelete, self).get_context_data(**kwargs)
+        context.update(self.extra_data)
+        return context

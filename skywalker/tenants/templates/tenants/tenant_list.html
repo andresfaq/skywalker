@@ -1,7 +1,12 @@
 {% extends "tenants-base.html" %}
 
+{% block breadcrumb %}
+<li>Tenants</li>
+<li>List</li>
+{% endblock%}
 
 {% block content %}
+
 <div class="col-xs-12">
 
     <div class="row">
@@ -32,7 +37,7 @@
                     data-widget-sortable="false"-->
                     <header>  
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>Export to PDF / Excel</h2>
+                        <h2>Tenant List</h2>
                     </header>
                     <!-- widget div-->
                     <div>
@@ -57,6 +62,7 @@
                                 </thead>
                                 <tbody>
                                     {% for tenant in object_list %}
+                                        {% if tenant.name != 'public' %}
                                         <tr>
                                             <td>{{ tenant.id }}</td>
                                             <td>{{ tenant.name }}</td>
@@ -76,10 +82,12 @@
                                                         <li><a href="{% url "tenants:edit" tenant.id %}">Edit</a></li>
                                                         <li class="divider"></li>
                                                         <li><a href="{% url "tenants:delete" tenant.id %}">Delete</a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                             </td>
                                         </tr>
+                                        {% endif %}
                                     {% endfor %}
                                 </tbody>
                             </table>
