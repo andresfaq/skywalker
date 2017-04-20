@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
 from baseapp.views import index
 from accounts.views import login_view
 
@@ -30,6 +32,10 @@ urlpatterns = [
     url(r'^login/$', login_view, name='login'),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^accounts/', include('allauth.urls')),
+    
+    # Bryan: I need this to verify my domain (c9) in Google
+    url(r'^google9f65af6041bf39b4.html$',
+        TemplateView.as_view(template_name="google9f65af6041bf39b4.html")),
 ]
 
 ## Se agregan este codigo para poder acceder a la imagen de la pizza que se encuentra
