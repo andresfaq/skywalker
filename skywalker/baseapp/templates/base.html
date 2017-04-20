@@ -98,7 +98,7 @@ Use search to find needed section.
         * 'fixed-page-footer' - Fixes footer
         * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
     -->
-<body class="fixed-header fixed-ribbon">
+<body class="fixed-header fixed-ribbon {{style}}">
 
 <!-- #HEADER -->
 {% include "header.html" %}
@@ -118,8 +118,10 @@ Use search to find needed section.
 
         <!-- breadcrumb -->
         <ol class="breadcrumb">
-            <li>Console</li>
-            <li>Blank</li>
+            {% block breadcrumb %}
+                <li>Home</li>
+                <li>Blank</li>
+            {% endblock %}
         </ol>
         <!-- end breadcrumb -->
 

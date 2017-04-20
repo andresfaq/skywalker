@@ -1,0 +1,9 @@
+{% extends "tenants-base.html" %}
+
+{% block content %}
+<h1>{{ tenant.name }}</h1>
+
+<p>
+    <a href="{% url "tenants:list" %}">Regresar</a>
+</p>
+{% endblock %}
