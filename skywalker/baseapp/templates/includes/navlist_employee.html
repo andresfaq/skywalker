@@ -1,16 +1,34 @@
+{% with url_name=request.resolver_match.url_name namespace=request.resolver_match.namespace %}
+
 <ul>
   <li>
+    <a href="#"><i class="fa fa-lg fa-fw fa-id-card-o"></i> <span class="menu-item-parent">My account</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'socialaccount_connections' %}active{% endif %}">
+        <a href="{% url 'socialaccount_connections' %}">Social connections</a>
+      </li>
+    </ul>
+  </li>
+  <li class="{% if namespace == 'accounts' %}open{% endif %}">
     <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
     <ul>
-      <li>
-        <a href="{% url 'accounts:user_list' %}">Users</a>
+      <li class="{% if url_name == 'user_list' %}active{% endif %}">
+        <a href="{% url 'accounts:user_list' %}">Clients</a>
       </li>
-      <li>
+      <li class="{% if url_name == 'employee_list' %}active{% endif %}">
         <a href="{% url 'accounts:employee_list' %}">Employees</a>
       </li>
-      <li>
-        <a href="#">Clients</a>
+    </ul>
+  </li>
+  <li class="{% if namespace == 'pizza' %}open{% endif %}">
+    <a href="#"><i class="fa fa-lg fa-fw fa-pie-chart"></i> <span class="menu-item-parent">Pizza management</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'ingredient_list' %}active{% endif %}">
+        <a href="{% url 'pizza:ingredient_list' %}">Ingredients</a>
       </li>
     </ul>
   </li>
 </ul>
+
+
+{% endwith %} 
