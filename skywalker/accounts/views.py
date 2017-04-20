@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import (LoginRequiredMixin,
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.generic import (DeleteView, ListView, UpdateView, CreateView,
     TemplateView)
