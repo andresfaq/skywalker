@@ -40,6 +40,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Standard fields: username, first_name, last_name, email
     # is_staff, is_active, is_superuser, last_login, date_joined
@@ -98,6 +99,7 @@ class Employee(models.Model):
         verbose_name_plural = 'Employees'
 
 
+# DO: delete this
 class Client(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 

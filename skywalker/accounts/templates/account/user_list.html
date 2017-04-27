@@ -27,9 +27,9 @@
         <td>{{ user.date_joined }}</td>
         <td class="text-align-center no-print">
           <div class="btn-group">
-            <a class="btn btn-default" href="#"><i class="fa fa-eye"></i></a>
-            <a class="btn btn-default" href="#"><i class="fa fa-edit"></i></a>
-            <a class="btn btn-default" href="#"><i class="fa fa-trash"></i></a>
+            <!--<a class="btn btn-default" href="#"><i class="fa fa-eye"></i></a>-->
+            <a class="btn btn-default" href="{% url 'accounts:user_edit' user.pk %}"><i class="fa fa-edit"></i></a>
+            <!--<a class="btn btn-default" href="#"><i class="fa fa-trash"></i></a>-->
           </div>
         </td>
       </tr>

@@ -1,11 +1,17 @@
 {% with url_name=request.resolver_match.url_name namespace=request.resolver_match.namespace %}
 
 <ul>
+  <li class="{% if namespace == 'tenants' %}active{% endif %}">
+		<a href="{% url 'tenants:list' %}"><i class="fa fa-lg fa-fw fa-code-fork"></i> <span class="menu-item-parent">Tenants</span></a>
+	</li>
   <li>
     <a href="#"><i class="fa fa-lg fa-fw fa-id-card-o"></i> <span class="menu-item-parent">My account</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
     <ul>
       <li class="{% if url_name == 'socialaccount_connections' %}active{% endif %}">
         <a href="{% url 'socialaccount_connections' %}">Social connections</a>
+      </li>
+      <li class="{% if url_name == 'account_reset_password' %}active{% endif %}">
+        <a href="{% url 'account_reset_password' %}">Reset password</a>
       </li>
     </ul>
   </li>

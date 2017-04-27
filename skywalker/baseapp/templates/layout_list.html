@@ -2,6 +2,16 @@
 
 
 {% block content %}
+<div class="row" id="btn-container">
+    <div class="col-md-12">
+        <div class="btn-group" role="group" style="margin-bottom: 20px;">
+            {% block new_action %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-xs-12">
         <section id="widget-grid">
             <div class="row">
@@ -50,4 +60,5 @@
         </section>
 
     </div>
+</div>
 {% endblock %}
