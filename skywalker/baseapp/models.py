@@ -22,7 +22,7 @@ class PizzaBase(models.Model):
 
     name = models.CharField(max_length=100, null=False, blank=False)
     description = models.CharField(max_length=300, null=False, blank=False)
-    image = models.FileField(upload_to='upload/')
+    image = models.FileField(upload_to='upload/', blank=True, null=True)
     aditions = models.ManyToManyField(Ingredient)
 
     def __str__(self):

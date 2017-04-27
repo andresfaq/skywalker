@@ -15,10 +15,11 @@ class IndexView(View):
         if user.is_authenticated() and user.is_active and not user.is_staff:
             # Session variable available in all templates
             user_role = ""
-            if hasattr(user, "client"):
-                user_role = "client"
-            elif hasattr(user, "employee"):
+            if hasattr(user, "employee"):
                 user_role = user.employee.employee_type
+            else:
+                user_role = "client"
+                # redirect to main page of client <-----------------------------
             request.session["user_role"] = user_role
             return render(request, "base.html")
         else:

@@ -35,6 +35,7 @@ SHARED_APPS = [
 ]
 
 TENANT_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
 
@@ -50,7 +51,7 @@ TENANT_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # # 'allauth.socialaccount.providers.facebook',
-    # # 'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -168,6 +169,7 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = reverse_lazy('login')
 
+LOGIN_REDIRECT_URL = '/'
 
 # Media files path
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -176,12 +178,24 @@ MEDIA_URL = '/media/'
 
 SITE_ID = 1
 
+
+# django-allauth
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'SKYWALKER Pizzas - '
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-# # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# Sending email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pizza.franchise.saas@gmail.com'
+EMAIL_HOST_PASSWORD = 'FRANCHISESKYWALKERSAAS'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
