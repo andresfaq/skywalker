@@ -32,6 +32,12 @@
       <li class="{% if url_name == 'ingredient_list' %}active{% endif %}">
         <a href="{% url 'pizza:ingredient_list' %}">Ingredients</a>
       </li>
+      <li class="{% if url_name == 'pizzabase_list' %}active{% endif %}">
+        <a href="{% url 'pizza:pizzabase_list' %}">Pizzas (base)</a>
+      </li>
+      <li class="{% if url_name == 'pizza_list' %}active{% endif %}">
+        <a href="{% url 'pizza:pizza_list' %}">Pizzas</a>
+      </li>
     </ul>
   </li>
 </ul>
