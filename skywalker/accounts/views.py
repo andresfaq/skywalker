@@ -60,29 +60,50 @@ class LoginView(TemplateView):
 login_view = LoginView.as_view()
 
 
-class ListUserView(ListView): 
+class ListClientView(ListView): 
     # permission_required = 'accounts.change_employee'
     model = get_user_model()
     template_name = 'account/user_list.html'
+    
+    def get_queryset(self):
+        q = self.model.objects.filter(employee__isnull = True)
+        q = q.filter(is_staff = False)
+        return q
 
 
-user_list = ListUserView.as_view()
+client_list = ListClientView.as_view()
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
     form_class = MyUserCreationForm
     model = get_user_model()
     template_name = 'object/object_form.html'
-    success_message = 'User successfully created!'
+    success_message = 'Client successfully created!'
     success_url = reverse_lazy('accounts:user_list')
 
     def get_context_data(self, **kwargs):
         context = super(CreateUserView, self).get_context_data(**kwargs)
-        context['form_title'] = "Create an user"
+        context['form_title'] = "Register an client"
         return context
 
 
 user_new = CreateUserView.as_view()
+
+
+class UpdateUserView(SuccessMessageMixin, UpdateView):
+    form_class = MyUserCreationForm
+    model = get_user_model()
+    template_name = 'object/object_form.html'
+    success_message = 'Client successfully updated!'
+    success_url = reverse_lazy('accounts:user_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateUserView, self).get_context_data(**kwargs)
+        context['form_title'] = "Update an client"
+        return context
+
+
+user_edit = UpdateUserView.as_view()
 
 
 class ListEmployeeView(ListView): 
