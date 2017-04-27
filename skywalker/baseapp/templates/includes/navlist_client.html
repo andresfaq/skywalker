@@ -1,28 +1,18 @@
+{% with url_name=request.resolver_match.url_name namespace=request.resolver_match.namespace %}
+
 <ul>
   <li>
-    <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">My orders</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <a href="#"><i class="fa fa-lg fa-fw fa-id-card-o"></i> <span class="menu-item-parent">My account</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
     <ul>
-      <li>
-        <a href="ajax/flot.html">Flot Chart</a>
+      <li class="{% if url_name == 'socialaccount_connections' %}active{% endif %}">
+        <a href="{% url 'socialaccount_connections' %}">Social connections</a>
       </li>
-      <li>
-        <a href="ajax/morris.html">Morris Charts</a>
-      </li>
-      <li>
-        <a href="ajax/sparkline-charts.html">Sparklines</a>
-      </li>
-      <li>
-        <a href="ajax/easypie-charts.html">EasyPieCharts</a>
-      </li>
-      <li>
-        <a href="ajax/dygraphs.html">Dygraphs</a>
-      </li>
-      <li>
-        <a href="ajax/chartjs.html">Chart.js</a>
-      </li>
-      <li>
-        <a href="ajax/hchartable.html">HighchartTable <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+      <li class="{% if url_name == 'account_reset_password' %}active{% endif %}">
+        <a href="{% url 'account_reset_password' %}">Reset password</a>
       </li>
     </ul>
   </li>
+  
 </ul>
+
+{% endwith %}

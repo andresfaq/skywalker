@@ -7,9 +7,11 @@ urlpatterns = [
     url(r'^login/$', views.login_view, name='login'),
     url(r'^logout/$', logout, {'next_page':'/'}, name='logout'),
 
-    # Users
-    url(r'^users/$', views.user_list, name='user_list'),
+    # Users (clients)
+    url(r'^users/$', views.client_list, name='user_list'),
     url(r'^user/new/$', views.user_new, name='user_new'),
+    url(r'^user/(?P<pk>[0-9]+)/edit/$', views.user_edit,
+        name='user_edit'),
 
     # Employees
     url(r'^employees/$', views.employee_list, name='employee_list'),
