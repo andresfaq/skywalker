@@ -16,9 +16,9 @@ from baseapp.models import (
 from baseapp.mixin import TitleContentPageMixin
 
 # REPORT
-class mostSoldExtraIngredients(TitleContentPageMixin, ListView):
+class most_sold_ingredients(TitleContentPageMixin, ListView):
     model = Ingredient
     var1 = "contexto variable julian"
-    template_name = "reports/mostSoldExtraIngredients.html"
+    template_name = "reports/most_sold_ingredients.html"
     title_content = "Most Sold Extra Ingredients"
 

@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
 from report.views import (
-    mostSoldExtraIngredients,
+    most_sold_ingredients,
 )
 
 
 urlpatterns = [
-    url(r'^mostSoldExtraIngredients/$', mostSoldExtraIngredients.as_view(), name='mostSoldExtraIngredients'),
+    url(r'^most_sold_ingredients/$', most_sold_ingredients.as_view(), name='most_sold_ingredients'),
 ]
