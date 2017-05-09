@@ -45,6 +45,7 @@ TENANT_APPS = [
     'accounts',
     'baseapp',
     'pizza',
+    'report',
 
     # django-allaut
     'allauth',
