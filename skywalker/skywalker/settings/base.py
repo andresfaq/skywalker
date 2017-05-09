@@ -45,6 +45,7 @@ TENANT_APPS = [
     'accounts',
     'baseapp',
     'pizza',
+    'report',
 
     # django-allaut
     'allauth',
@@ -81,7 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #'skywalker.middleware.tenant_context_processors.tenant_template_style',
+                'skywalker.middleware.tenant_context_processors.tenant_template_style',
             ],
         },
     },

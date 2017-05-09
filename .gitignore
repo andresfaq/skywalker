@@ -17,11 +17,11 @@ skywalker/*/migrations/*.py
 #Ignore local dev settings
 skywalker/skywalker/settings/dev.py
 
-#Ignore local base settings
-skywalker/skywalker/settings/base.py
+#Ignore local base settings #--> Ignore julian
+#skywalker/skywalker/settings/base.py
 
-#Ignore local create tenants --> Ignore julian
-utilities/create-tenants_local.py
+#Ignore local create tenants #--> Ignore julian
+#utilities/create-tenants_local.py
 
 #Ignore .sqlite3 files
 *.sqlite3

@@ -27,6 +27,8 @@ urlpatterns = [
     # url(r'^console/', include('baseapp.urls')),
     url(r'^pizza/', include('pizza.urls', namespace='pizza')),
     url(r'^tenant/', include('tenants.urls', namespace='tenants')),
+    # url reportes (incluida por JULIAN)
+    url(r'^report/', include('report.urls', namespace='pizza')),
 
     url(r'^$', index, name='index'),
     url(r'^login/$', login_view, name='login'),
