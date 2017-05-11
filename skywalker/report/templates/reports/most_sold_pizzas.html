@@ -17,7 +17,7 @@
 
             <header>
                 <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
-                <h2>Bar Most sold ingredients </h2>
+                <h2>Bar Most sold pizza </h2>
             </header>
 
             <!-- widget div-->
@@ -54,11 +54,11 @@
             Morris.Bar({
                 element : 'bar-graph',
                 data : [
-                {% for extra in consulta %}
+                {% for order in consulta %}
 
                 {
-                     x : '{{ extra.ingredient__name  }}',
-                     y : '{{ extra.ingredient_amount }}'
+                     x : '{{ order.pizza__pizza_base__name  }}',
+                     y : '{{ order.count_pizzabase          }}'
                  },
 
                 {% endfor %}
@@ -90,19 +90,7 @@
     <!-- SmartChat UI : plugin -->
     <script src="{% static "baseapp/js/smart-chat-ui/smart.chat.ui.min.js" %}" ></script>       <!-- No necesaria -->
     <script src="{% static "baseapp/js/smart-chat-ui/smart.chat.manager.min.js" %}" ></script>  <!-- No necesaria -->
-
-    <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-    <!--
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.cust.min.js" %}" ></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.cust.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.resize.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.fillbetween.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.orderBar.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.pie.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.time.min.js" %}"></script>
-    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.tooltip.min.js" %}"></script>
-    -->
-
+    
     <script src="{% static "baseapp/js/plugin/morris/raphael.min.js" %}"></script>
     <script src="{% static "baseapp/js/plugin/morris/morris.min.js"  %}"></script>
 
