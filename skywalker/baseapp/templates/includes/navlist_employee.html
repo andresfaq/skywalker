@@ -1,0 +1,46 @@
+{% with url_name=request.resolver_match.url_name namespace=request.resolver_match.namespace %}
+
+<ul>
+  <li class="{% if namespace == 'tenants' %}active{% endif %}">
+		<a href="{% url 'tenants:list' %}"><i class="fa fa-lg fa-fw fa-code-fork"></i> <span class="menu-item-parent">Tenants</span></a>
+	</li>
+  <li>
+    <a href="#"><i class="fa fa-lg fa-fw fa-id-card-o"></i> <span class="menu-item-parent">My account</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'socialaccount_connections' %}active{% endif %}">
+        <a href="{% url 'socialaccount_connections' %}">Social connections</a>
+      </li>
+      <li class="{% if url_name == 'account_reset_password' %}active{% endif %}">
+        <a href="{% url 'account_reset_password' %}">Reset password</a>
+      </li>
+    </ul>
+  </li>
+  <li class="{% if namespace == 'accounts' %}open{% endif %}">
+    <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'user_list' %}active{% endif %}">
+        <a href="{% url 'accounts:user_list' %}">Clients</a>
+      </li>
+      <li class="{% if url_name == 'employee_list' %}active{% endif %}">
+        <a href="{% url 'accounts:employee_list' %}">Employees</a>
+      </li>
+    </ul>
+  </li>
+  <li class="{% if namespace == 'pizza' %}open{% endif %}">
+    <a href="#"><i class="fa fa-lg fa-fw fa-pie-chart"></i> <span class="menu-item-parent">Pizza management</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'ingredient_list' %}active{% endif %}">
+        <a href="{% url 'pizza:ingredient_list' %}">Ingredients</a>
+      </li>
+      <li class="{% if url_name == 'pizzabase_list' %}active{% endif %}">
+        <a href="{% url 'pizza:pizzabase_list' %}">Pizzas (base)</a>
+      </li>
+      <li class="{% if url_name == 'pizza_list' %}active{% endif %}">
+        <a href="{% url 'pizza:pizza_list' %}">Pizzas</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+{% endwith %} 

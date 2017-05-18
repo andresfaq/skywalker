@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Delete all the migrations
+find ../skywalker/ -path *migrations* -name "*.py" -not -path "*__init__*" -exec rm {} \;

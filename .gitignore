@@ -22,3 +22,6 @@ skywalker/skywalker/settings/dev.py
 
 #Ignore static files
 skywalker/staticfiles
+
+#Ignore media files
+skywalker/media/*
