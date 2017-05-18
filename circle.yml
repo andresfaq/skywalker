@@ -15,5 +15,6 @@ database:
     - bash ../utilities/resetdb-ci.sh
 
 test:
-  override:
-    pwd: skywalker/skywalker
+  override: 
+    - tox:
+      pwd: skywalker/skywalker
