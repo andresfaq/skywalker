@@ -17,4 +17,4 @@ database:
 test:
   override: 
     - tox:
-      pwd: skywalker/skywalker
+      pwd: skywalker
