@@ -28,3 +28,4 @@ pytz==2016.10
 requests==2.13.0
 requests-oauthlib==0.8.0
 six==1.10.0
+tox==2.7.0
