@@ -1,0 +1,43 @@
+{% extends 'layout_list.html' %}
+
+{% block new_action %}
+  <a href="{% url 'accounts:employee_new' %}" class="btn btn-default">
+    <i class="fa fa-plus"></i> Create new Employee</a>
+{% endblock %}
+
+{% block table %}
+  <table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
+    <thead>
+    <tr>
+      <!-- username, first_name, last_name, email is_staff, is_active, is_superuser, last_login, date_joined -->
+      <!-- address, date_of_birth, cellphone, dni, phone -->
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Is active</th>
+      <th>Date joined</th>
+      <th>Adress</th>
+      <th>Cellphone</th>
+      <th width="20%" data-hide="phone,tablet">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for employee in object_list %}
+      <tr>
+        <td>{{ employee.user.first_name }} {{ employee.user.last_name }}</td>
+        <td>{{ employee.user.email }}</td>
+        <td>{{ employee.user.is_active }}</td>
+        <td>{{ employee.user.date_joined }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.cellphone }}</td>
+        <td class="text-align-center">
+          <div class="btn-group">
+            <!-- <a class="btn btn-default" href=""><i class="fa fa-eye"></i></a> -->
+            <a class="btn btn-default" href="{% url 'accounts:employee_edit' employee.pk %}"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-default" href=""><i class="fa fa-trash"></i></a>
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
