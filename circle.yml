@@ -1,6 +1,6 @@
 # A list of CircleCI's Python versions is at https://circleci.com/docs/build-image-trusty/#python
 general:
-  build_dir: skywalker/skywalker
+  build_dir: skywalker
 
 machine:
   post:
