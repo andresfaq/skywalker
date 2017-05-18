@@ -1,0 +1,5 @@
+deployment:
+  production:
+    branch: circleci
+    commands:
+      - echo "Hello World" >> ci.txt 
