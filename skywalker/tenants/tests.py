@@ -16,3 +16,4 @@ class AnimalTestCase(TestCase):
 
         tenant = Tenant.objects.get(name="Tenant CI")
         self.assertEqual(tenant.on_trial, False)
+        self.assertEqual(tenant.style, 'smart-style-5')
