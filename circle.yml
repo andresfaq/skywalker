@@ -5,7 +5,7 @@ general:
     only:
      - master
      - integration
-     - /pull/\d/
+     - /pull/*/
 
 machine:
   python:
