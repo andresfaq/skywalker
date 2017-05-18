@@ -1,11 +1,15 @@
 # A list of CircleCI's Python versions is at https://circleci.com/docs/build-image-trusty/#python
 general:
-  build_dir: skywalker
+  build_dir: skywalker/skywalker
 
 machine:
   post:
     - pyenv global 2.7.12 3.4.4 3.5.2 3.6.0
 
 dependencies:
-  override:
+  pre:
     - pip install -r ../requirements/base.txt
+
+database:
+  pre:
+    - bash ../utilities/resetdb-ci.sh
