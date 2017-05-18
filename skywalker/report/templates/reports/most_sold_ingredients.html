@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block graphicReport %}
+<!-- row -->
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" 
+             data-widget-editbutton="false"
+             data-widget-editbutton="false"
+             data-widget-colorbutton="false"
+             data-widget-togglebutton="false"
+             data-widget-deletebutton="false"
+             data-widget-sortable="false">
+
+            <header>
+                <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                <h2>Bar Most sold ingredients </h2>
+            </header>
+
+            <!-- widget div-->
+            <div> 
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox"> <!-- This area used as dropdown edit box -->
+                </div> <!-- end widget edit box -->
+                
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <!-- <div id="bar-chart" class="chart"></div> ===> para el caso de la libreria FLOT -->
+                    <div id="bar-graph" class="chart no-padding"></div>
+                </div> <!-- end widget content -->
+            </div> <!-- end widget div -->
+        </div><!-- end widget -->
+
+
+    </article>
+    <!-- WIDGET END -->
+
+</div>
+{% endblock %}
+
+{% block reportFuntions %}
+{% load static %}
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <script src="{% static "report/js/jquery.js"           %}" ></script>
+    <script src="{% static "report/js/loadDataGraphic.js"  %}" ></script>
+
+    <script> 
+    $(document).ready(function() {
+        // bar graph color
+        if ($('#bar-graph').length) {
+            Morris.Bar({
+                element : 'bar-graph',
+                data : [
+                {% for extra in consulta %}
+
+                {
+                     x : '{{ extra.ingredient__name  }}',
+                     y : '{{ extra.ingredient_amount }}'
+                 },
+
+                {% endfor %}
+                 ],
+                 xkey   : 'x',
+                 ykeys  : ['y'],
+                 labels : ['Y'],
+                 barColors : function(row, series, type) {
+                    if (type === 'bar') {
+                        var red = Math.ceil(150 * row.y / this.ymax);
+                        return 'rgb(' + red + ',0,0)';
+                    } else {
+                        return '#000';
+                    }
+                }
+            });
+        }
+    });
+    
+    </script>
+    
+{% endblock %}
+
+{% block reportImports %}
+{% load static %}
+    <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+     <!-- Voice command : plugin -->
+    <script src="{% static "baseapp/js/speech/voicecommand.min.js" %}" ></script>               <!-- No necesaria -->
+    <!-- SmartChat UI : plugin -->
+    <script src="{% static "baseapp/js/smart-chat-ui/smart.chat.ui.min.js" %}" ></script>       <!-- No necesaria -->
+    <script src="{% static "baseapp/js/smart-chat-ui/smart.chat.manager.min.js" %}" ></script>  <!-- No necesaria -->
+
+    <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+    <!--
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.cust.min.js" %}" ></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.cust.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.resize.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.fillbetween.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.orderBar.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.pie.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.time.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/flot/jquery.flot.tooltip.min.js" %}"></script>
+    -->
+
+    <script src="{% static "baseapp/js/plugin/morris/raphael.min.js" %}"></script>
+    <script src="{% static "baseapp/js/plugin/morris/morris.min.js"  %}"></script>
+
+
+{% endblock %}    

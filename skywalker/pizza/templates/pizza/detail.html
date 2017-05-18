@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block new_action %}
+    <a class="btn btn-default" href="{% url "pizza:pizza_edit" pizza.id %}">
+        <i class="fa fa-edit"></i> Edit Pizza</a>
+    <a class="btn btn-default" href="{% url "pizza:pizzabase_edit" pizza.pizza_base.id %}"><i
+            class="fa fa-edit"></i> Edit Pizza Base</a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-12 col-md-8">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ pizza.pizza_base.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ pizza.pizza_base.description }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ pizza.price }}</td>
+                </tr>
+                <tr>
+                    <th>Size</th>
+                    <td>{{ pizza.size }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td><img class="img-responsive" width="400" height="300" src="{{ pizza.pizza_base.image.url }}">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-4 col-sm-12 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ingredients</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        {% for adition in pizza.pizza_base.aditions.all %}
+                            <tr>
+                                <td>{{ adition.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

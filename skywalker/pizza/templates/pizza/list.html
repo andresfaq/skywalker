@@ -1,0 +1,41 @@
+{% extends 'layout_list.html' %}
+
+{% block new_action %}
+    <a class="btn btn-default" href="{% url "pizza:pizza_creation" %}">
+        <i class="fa fa-plus"></i> New Pizza</a>
+{% endblock %}
+
+{% block table %}
+    <table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th width="20%" data-hide="phone,tablet"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pizza in object_list %}
+            <tr>
+                <td>{{ pizza.pizza_base.name }}</td>
+                <td>{{ pizza.size }}</td>
+                <td>{{ pizza.price }}</td>
+                <td>{{ pizza.pizza_base.description }}</td>
+                <td class="text-align-center">
+                    <div class="btn-group">
+                        <a class="btn btn-default" href="{% url "pizza:pizza_detail" pizza.id %}"><i
+                                class="fa fa-eye"></i></a>
+                        <a class="btn btn-default" href="{% url "pizza:pizza_edit" pizza.id %}"><i
+                                class="fa fa-edit"></i></a>
+                        <a class="btn btn-default" href="{% url "pizza:pizza_delete" pizza.id %}"><i
+                                class="fa fa-trash"></i></a>
+                    </div>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

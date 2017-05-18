@@ -22,20 +22,37 @@ ALLOWED_HOSTS = ['*']
 SHARED_APPS = [
     'tenant_schemas',
     'tenants',
-    'landing',
-    'django.contrib.admin',
-    'django.contrib.auth',
+    # 'accounts',
+    # 'django.contrib.admin',
+    # 'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third-party
+    'crispy_forms',
 ]
 
 TENANT_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.sites',
 
     'django.contrib.contenttypes',
+    
     # my apps
+    'accounts',
     'baseapp',
+    'pizza',
+    'report',
+
+    # django-allaut
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # # 'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -65,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'skywalker.middleware.tenant_context_processors.tenant_template_style',
             ],
         },
     },
@@ -113,6 +131,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of 'allauth'
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 'allauth' specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -145,6 +170,41 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = reverse_lazy('login')
 
+LOGIN_REDIRECT_URL = '/'
 
 # Media files path
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+
+
+SITE_ID = 1
+
+
+# django-allauth
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'SKYWALKER Pizzas - '
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Sending email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pizza.franchise.saas@gmail.com'
+EMAIL_HOST_PASSWORD = 'FRANCHISESKYWALKERSAAS'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Bryan: For Bootstrap 3 is needed to override the constant ERROR
+# to change error into danger
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}

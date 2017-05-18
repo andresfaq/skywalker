@@ -1,0 +1,105 @@
+{% extends "tenants-base.html" %}
+
+{% block breadcrumb %}
+<li>Tenants</li>
+<li>List</li>
+{% endblock%}
+
+{% block content %}
+
+<div class="col-xs-12">
+
+    <div class="row">
+        <div class="col-xs-12">
+        <a style=" color: white; text-decoration: none;" href="{% url "tenants:new" %}" class="btn bg-color-green"><i class="fa fa-plus"></i>  Create New Tenant</a>
+        </div>
+    </div>
+    <br>
+    <section id="widget-grid">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" 
+                    data-widget-colorbutton="false" 
+                    data-widget-togglebutton="false" 
+                    data-widget-deletebutton="false" 
+                    data-widget-sortable="false"
+                    data-widget-editbutton="false">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"-->
+                    <header>  
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Tenant List</h2>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                        </div>
+                        <!-- end widget edit box -->
+                        
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+                            
+                            <table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th data-hide="phone">ID</th>
+                                        <th data-class="expand">Name</th>
+                                        <th>Paid Until</th>
+                                        <th data-hide="phone">Paid Status</th>
+                                        <th data-hide="phone,tablet"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for tenant in object_list %}
+                                        {% if tenant.name != 'public' %}
+                                        <tr>
+                                            <td>{{ tenant.id }}</td>
+                                            <td>{{ tenant.name }}</td>
+                                            <td>{{ tenant.paid_until }}</td>
+                                            <td>{% if tenant.on_trial %}
+                                                    <span class="badge bg-color-orange">on trial</span>
+                                                {% else %}
+                                                    <span class="badge bg-color-green">on paid</span>
+                                                {% endif %}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                        Actions <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{% url "tenants:detail" tenant.id %}">Details</a></li>
+                                                        <li><a href="{% url "tenants:edit" tenant.id %}">Edit</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{% url "tenants:delete" tenant.id %}">Delete</a></li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
