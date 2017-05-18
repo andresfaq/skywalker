@@ -1,0 +1,7 @@
+#!/bin/bash
+# Reiniciador de la base de datos
+# Reemplazen el nombre de usuario
+# Ejecuten haciendo [. resetdb-c9] en consola
+psql -c 'DROP DATABASE skywalker;'
+psql -c 'CREATE DATABASE skywalker WITH OWNER postgres;'
+psql -c 'GRANT ALL PRIVILEGES ON DATABASE skywalker TO postgres;'
