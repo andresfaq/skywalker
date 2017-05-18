@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python ../skywalker/manage.py shell < create-tenants.py --settings=skywalker.settings.dev

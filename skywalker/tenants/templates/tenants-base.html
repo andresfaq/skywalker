@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{%block nav-list%}
+<ul>
+    <li {% if active == 'dashboard' %} class="active"{% endif %}>
+		<a href="" title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+	</li>
+    <li {% if active == 'list' %} class="active"{% endif %}>
+		<a href="#" title="Management"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tenant Management</span></a>
+	</li>
+    <li {% if active == 'reports' %} class="active"{% endif %}>
+		<a href="#" title="Reports"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reports</span></a>
+	</li>
+</ul>
+{%endblock%}
