@@ -1,0 +1,3 @@
+#!/bin/bash
+python ../skywalker/manage.py makemigrations --settings=skywalker.settings.dev
+python ../skywalker/manage.py migrate_schemas --shared --settings=skywalker.settings.dev
