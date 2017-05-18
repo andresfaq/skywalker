@@ -3,8 +3,8 @@ general:
   build_dir: skywalker
 
 machine:
-  post:
-    - pyenv global 2.7.12 3.4.4 3.5.2 3.6.0
+  python:
+    version: 3.5.2
 
 dependencies:
   pre:
