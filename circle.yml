@@ -13,3 +13,7 @@ dependencies:
 database:
   pre:
     - bash ../utilities/resetdb-ci.sh
+
+test:
+  override:
+    pwd: skywalker/skywalker
