@@ -12,7 +12,7 @@
               <td>Size</td>
           </tr>
     
-{% for pizza in pizzas %}
+{% for pizza in sale.pizzas.all %}
 <tr>
  <td>{{ pizza.pizza_base.name }}</td>   
  <td>{{ pizza.price }}</td>
