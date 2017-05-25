@@ -54,35 +54,26 @@ class Pizza(models.Model):
         default=LARGE,
     )
 
-# Order Class
-class Order(models.Model):
-    class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = "Orders"
-
-    pizza = models.ForeignKey(Pizza)
-    ingredients = models.ManyToManyField(
-        Ingredient,
-        through='Extra',
-        through_fields=('order', 'ingredient'))
-    note = models.CharField(max_length=1000, null=False, blank=False)
-
-# Extra Ingredient Class
-class Extra(models.Model):
-    class Meta:
-        verbose_name = "Extra"
-        verbose_name_plural = "Extras"
-
-    order = models.ForeignKey(Order)
-    ingredient = models.ForeignKey(Ingredient)
-    amount = models.PositiveIntegerField(null=True, default=1)
-
-
 # Sale Class
 class Sale(models.Model):
     class Meta:
         verbose_name = 'Sale'
         verbose_name_plural = "Sales"
 
+    PENDING = 'PE'
+    DONE = 'DO'
+    
+    STATUS_CHOICES = (
+        (PENDING, 'Pending'),
+        (DONE, 'Done')
+    )
+    
     salesman = models.ForeignKey(Employee)
-    orders = models.ManyToManyField(Order)
+    client = models.ForeignKey(Client)
+    pizza = models.ManyToManyField(Pizza)
+    date = models.DateTimeField()
+    type = models.CharField(
+        max_length=2,
+        choices=STATUS_CHOICES,
+        default=PENDING,
+    )
