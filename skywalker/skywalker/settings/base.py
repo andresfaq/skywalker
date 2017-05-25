@@ -45,8 +45,8 @@ TENANT_APPS = [
     'accounts',
     'baseapp',
     'pizza',
+    'client',
     'report',
-
     # django-allaut
     'allauth',
     'allauth.account',
@@ -70,6 +70,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'skywalker.urls'
+PUBLIC_SCHEMA_URLCONF = 'skywalker.public_urls'
+
 
 TEMPLATES = [
     {
