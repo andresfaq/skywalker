@@ -176,6 +176,10 @@ Use search to find needed section.
         
         {% block content %}
         {% endblock %}
+
+        {% block graphicReport %}
+        {% endblock %}
+        
         
     </div>
     <!-- END MAIN CONTENT -->
@@ -198,6 +202,9 @@ Use search to find needed section.
 <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)
         <script data-pace-options='{ "restartOnRequestAfter": true }' src="{% static "baseapp/js/plugin/pace/pace.min.js" %}"></script>-->
 
+{% block reportFuntions %}
+
+{% endblock %}
 
 <!-- #PLUGINS -->
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
@@ -255,7 +262,7 @@ Use search to find needed section.
             <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
         <![endif]-->
 
-<!-- MAIN APP JS FILE -->
+    <!-- MAIN APP JS FILE -->
 <script src="{% static "baseapp/js/app.min.js" %}"></script>
 
 
@@ -265,6 +272,12 @@ Use search to find needed section.
 <script src="{% static "baseapp/js/plugin/datatables/dataTables.tableTools.min.js" %}"></script>
 <script src="{% static "baseapp/js/plugin/datatables/dataTables.bootstrap.min.js" %}"></script>
 <script src="{% static "baseapp/js/plugin/datatable-responsive/datatables.responsive.min.js" %}"></script>
+
+{% block reportImports %}
+{% endblock %}
+
+
+
 
 <script type="text/javascript">
     // DO NOT REMOVE : GLOBAL FUNCTIONS!
