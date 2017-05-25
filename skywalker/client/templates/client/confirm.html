@@ -1,0 +1,29 @@
+{% extends 'client/index.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<div>
+      <table class="table table-striped">
+          <tr>
+              <td>Name</td>
+              <td>Price</td>
+              <td>Size</td>
+          </tr>
+    
+{% for pizza in pizzas %}
+<tr>
+ <td>{{ pizza.pizza_base.name }}</td>   
+ <td>{{ pizza.price }}</td>
+ <td>{{ pizza.size }}</td>
+</tr>
+{% endfor %}
+
+  </table>
+</div>
+
+{% endblock %}
+
+
+

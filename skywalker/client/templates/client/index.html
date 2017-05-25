@@ -40,6 +40,22 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+{% block javascript %}
+<script src="{% static "client/js/jquery-1.11.3.min.js" %}"></script>
+<script src="{% static "client/js/bootstrap.min.js" %}"></script>
+<script src="{% static "client/js/own-menu.js" %}"></script>
+<script src="{% static "client/js/owl.carousel.min.js" %}"></script>
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.t.min.js" %}"></script>
+<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.min.js" %}"></script>
+<script src="{% static "client/js/main.j" %}s"></script>
+
+<!-- Begin Map Script-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src="{% static "client/js/map.js" %}"></script>
+{% endblock %}
+
+
 </head>
 <body>
 
@@ -51,29 +67,28 @@
         <div class="container">
 
             <!-- Pull Left -->
-            <span class="numb">Order Now (02) 123-456-7890</span>
+            <span class="numb">Pedir a domicilio (+572) 123-456-7890</span>
             <!-- Social Icons -->
             <div class="social"><a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i
                     class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-instagram"></i></a></div>
-            <span class="time-ta">We Are Open 10:00am - 11:00pm</span>
+            <span class="time-ta">Abrimos desde las 10:00am - 11:00pm</span>
 
             <!-- Pull Right -->
             <div class="pull-right">
                 <ul class="login-info">
                     <li>
                         <select class="selectpicker">
-                            <option>EN</option>
+                            <option>ES</option>
                             <option>FR</option>
-                            <option>AR</option>
                         </select>
                     </li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="#.">Register</a></li>
+                    <li><a href="login.html">Acceder</a></li>
+                    <li><a href="#.">Registrese</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
+{% block body %}
     <!-- header -->
     <header>
         <div class="sticky">
@@ -87,11 +102,11 @@
                 <nav class="navbar">
                     <!-- NAV -->
                     <ul class="nav ownmenu">
-                        <li class="scroll active"><a href="#home">Home </a></li>
-                        <li class="scroll"><a href="#our-menu">Our Menu </a></li>
-                        <li class="scroll"><a href="#restaurant">Restaurant </a></li>
-                        <li class="scroll"><a href="#testimonials">Testimonials </a></li>
-                        <li class="scroll"><a href="#contact">Contact </a></li>
+                        <li class="scroll active"><a href="#home">Inicio </a></li>
+                        <li class="scroll"><a href="#our-menu">Menu </a></li>
+                        <li class="scroll"><a href="#restaurant">Restaurante </a></li>
+                        <li class="scroll"><a href="#testimonials">Testimonios </a></li>
+                        <li class="scroll"><a href="#contact">Contacto </a></li>
                         <li><a href="index.html">Pages </a>
                             <ul class="dropdown right animated-3s fadeIn">
                                 <li><a href="02-Composer-Step1.html">Composer Step 1</a></li>
@@ -106,12 +121,13 @@
                     </ul>
 
                     <!-- Nav Right -->
-                    <div class="nav-right"><a href="02-Composer-Step1.html" class="compose">Compose Pizza <i
+                    <div class="nav-right"><a href="/order/" class="compose">Hacer Pedido <i
                             class="fa fa-check-square-o"></i></a></div>
                 </nav>
             </div>
         </div>
     </header>
+
 
     <!--======= HOME MAIN SLIDER =========-->
     <section class="home-slider" id="home">
@@ -145,7 +161,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:60px; color:#ff8400; max-width: auto; max-height: auto; white-space: nowrap;">
-                            Delicous Taste
+                            Deliciosa Pizza
                         </div>
 
                         <!-- LAYER NR. 2 -->
@@ -161,7 +177,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:80px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            Italian Style
+                            Estilo Italiano
                         </div>
 
                         <!-- LAYER NR. 3 -->
@@ -188,7 +204,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn btn-round">Start Ordering <i
+                             style="z-index: 8;"><a href="/order/" class="btn btn-round">Iniciar Ordenando <i
                                 class="fa fa-long-arrow-right"></i></a></div>
                     </li>
 
@@ -322,6 +338,7 @@
         </div>
     </section>
 
+
     <!-- Content -->
     <div id="content">
 
@@ -330,8 +347,8 @@
             <div class="container">
 
                 <!-- Heading Block -->
-                <div class="heading text-center"><span>Pleasure of Choice</span>
-                    <h3>Our Pizza Menu</h3>
+                <div class="heading text-center"><span>Placer de Escoger</span>
+                    <h3>Menú de Pizzas</h3>
                     <hr>
                     <i class="fa fa-bookmark-o"></i></div>
 
@@ -547,6 +564,7 @@
         {#        </section>#}
     </div>
 
+{% endblock %}
     <!-- FOOTER -->
     <footer class="tri-white-top">
         <div class="container">
@@ -583,17 +601,7 @@
         </div>
     </section>
 </div>
-<script src="{% static "client/js/jquery-1.11.3.min.js" %}"></script>
-<script src="{% static "client/js/bootstrap.min.js" %}"></script>
-<script src="{% static "client/js/own-menu.js" %}"></script>
-<script src="{% static "client/js/owl.carousel.min.js" %}"></script>
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.t.min.js" %}"></script>
-<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.min.js" %}"></script>
-<script src="{% static "client/js/main.j" %}s"></script>
 
-<!-- Begin Map Script-->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<script src="{% static "client/js/map.js" %}"></script>
+
 </body>
 </html>
