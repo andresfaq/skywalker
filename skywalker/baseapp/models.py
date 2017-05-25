@@ -68,9 +68,9 @@ class Sale(models.Model):
         (DONE, 'Done')
     )
     
-    salesman = models.ForeignKey(Employee)
-    client = models.ForeignKey(Client)
-    pizza = models.ManyToManyField(Pizza)
+    salesman = models.ForeignKey(Employee, blank=True, null=True)
+    client = models.ForeignKey(Client,  blank=True, null=True)
+    pizzas = models.ManyToManyField(Pizza)
     date = models.DateTimeField()
     type = models.CharField(
         max_length=2,
