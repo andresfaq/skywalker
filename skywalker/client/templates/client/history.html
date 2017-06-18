@@ -1,0 +1,40 @@
+{% extends 'client/index.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<h1 class="text-center">Sale History</h1>
+
+<div style="heigth: 500px">
+      <table class="table table-striped">
+          <tr>
+              <th>Date</th>
+              <th>Total</th>
+              <th class="text-center">Status</th>
+              <th class="text-center"><i class="fa fa-cog"></i></th>
+          </tr>
+    
+{% for sale in sales %}
+<tr>
+ <td>{{ sale.date }}</td>   
+ <td><b>${{ sale.total }}</b></td>
+ <td class="text-center"> {% if sale.status == "PE" %} PENDING {% elif sale.status  == "CA" %} CANCELED  {% else %} DONE {% endif %}</td>
+ <td class="text-center"> 
+ {% if sale.status == "PE" %}
+ <a class=" btn-default" href="{% url "client:client_order_cancel" sale.id  %}"><i class="fa fa-close"></i> Cancel </a>
+ {% else %}
+ Done
+ {% endif %}
+ </td>
+ 
+</tr>
+{% endfor %}
+
+  </table>
+</div>
+
+{% endblock %}
+
+
+
