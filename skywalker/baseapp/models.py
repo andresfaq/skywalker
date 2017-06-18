@@ -54,6 +54,7 @@ class Pizza(models.Model):
         default=LARGE,
     )
 
+
 # Sale Class
 class Sale(models.Model):
     class Meta:
@@ -62,18 +63,33 @@ class Sale(models.Model):
 
     PENDING = 'PE'
     DONE = 'DO'
+    CANCEL = "CA"
     
     STATUS_CHOICES = (
         (PENDING, 'Pending'),
-        (DONE, 'Done')
+        (DONE, 'Done'),
+        (CANCEL, 'Canceled')
     )
     
     salesman = models.ForeignKey(Employee, blank=True, null=True)
     client = models.ForeignKey(Client,  blank=True, null=True)
-    pizzas = models.ManyToManyField(Pizza)
     date = models.DateTimeField()
-    type = models.CharField(
+    total = models.PositiveIntegerField(null=True)
+
+    status = models.CharField(
         max_length=2,
         choices=STATUS_CHOICES,
         default=PENDING,
     )
+
+
+class Order(models.Model):
+    class Meta:
+        verbose_name = 'Order'
+        verbose_name_plural = "Orders"
+
+    pizza = models.ForeignKey(Pizza)
+    sale = models.ForeignKey(Sale)
+    quantity = models.PositiveIntegerField(null=True)
+    note = models.CharField(max_length=1000, null=True, blank=False)
+    total = models.PositiveIntegerField(null=True)

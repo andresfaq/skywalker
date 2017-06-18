@@ -84,6 +84,7 @@
                     </li>
                     <li><a href="login.html">Acceder</a></li>
                     <li><a href="#.">Registrese</a></li>
+                    <li><a href="{% url "client:client_history"  %}">History</a></li>
                 </ul>
             </div>
         </div>
@@ -121,7 +122,7 @@
                     </ul>
 
                     <!-- Nav Right -->
-                    <div class="nav-right"><a href="/order/" class="compose">Hacer Pedido <i
+                    <div class="nav-right"><a href="{% url "client:client_order"  %}" class="compose">Hacer Pedido <i
                             class="fa fa-check-square-o"></i></a></div>
                 </nav>
             </div>
@@ -204,7 +205,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="/order/" class="btn btn-round">Iniciar Ordenando <i
+                             style="z-index: 8;"><a href="{% url "client:client_order"  %}" class="btn btn-round">Iniciar Ordenando <i
                                 class="fa fa-long-arrow-right"></i></a></div>
                     </li>
 
