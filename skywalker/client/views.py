@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from baseapp.models import Pizza, Sale
+from baseapp.models import Pizza, Sale, Order
 from accounts.models import Employee, Client
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -57,4 +59,3 @@ def order_cancel(request, id):
     sale.save();
     sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
-    
