@@ -5,6 +5,10 @@ from accounts.models import Employee, Client
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
 from datetime import datetime
 
 
@@ -12,22 +16,21 @@ def index(request):
     pizzas = Pizza.objects.all()
     return render(request, 'client/index.html', {'pizzas': pizzas})
 
-
+@login_required()
 def order(request):
     pizzas = Pizza.objects.all()
     return render(request, 'client/order.html', {'pizzas': pizzas})
 
-
+@login_required()
 def order_create(request):
     if request.method == 'POST':
+        client = Client.objects.get(id=request.user.id)  
         pizzas_data = request.POST.getlist('products_selected[]')
-        ##client_db = Client.objects.get(pk=1) ##TODO se debe tomar la persona que está logueada
         sale_create = Sale(
-            ##client=client_db,
+            client=client,
             date=datetime.now()
         )
-        sale_create.save()
-        total_global = 0;
+        total_global = 0
         for string in pizzas_data:
             identificator, quantity_number = string.split('|')
             p = Pizza.objects.get(pk=identificator)
@@ -43,15 +46,16 @@ def order_create(request):
 
 
 ## vista usada para mostrar el historial de ventas
+@login_required()
 def history(request):
-    sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
+    client = Client.objects.get(id=request.user.id)  
+    sales = Sale.objects.all().filter(client_id=client.id).order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
     
-
+@login_required()
 def order_cancel(request, id):
     sale = Sale.objects.get(pk=id);
     sale.status = "CA";
     sale.save();
     sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
-    
