@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from baseapp.models import Pizza, Sale, Order
 from accounts.models import Employee, Client
 from django.http import HttpResponseRedirect
-
+from django.core.urlresolvers import reverse
 
 from datetime import datetime
 
@@ -44,10 +44,14 @@ def order_create(request):
 
 ## vista usada para mostrar el historial de ventas
 def history(request):
-    sales = Sale.objects.all()##TODO importante aqui se debe buscar por el cliente logueado
+    sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
     
 
 def order_cancel(request, id):
+    sale = Sale.objects.get(pk=id);
+    sale.status = "CA";
+    sale.save();
+    sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
+    return render(request, 'client/history.html', {'sales': sales})
     
-    return HttpResponseRedirect("client:client_history")
