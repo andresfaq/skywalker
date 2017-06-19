@@ -1,0 +1,53 @@
+{% extends 'client/index.html' %}
+
+{% load static %}
+
+{% block javascript %}
+
+<link href="{% static "client/css/smart_cart.css" %}" rel="stylesheet" type="text/css"> 
+<script type="text/javascript" src="{% static "client/js/jquery-1.3.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "client/js/jquery.smartCart-2.0.js" %}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+      <section class="pizza-menu tri-white-top padding-top-50 padding-bottom-50" id="our-menu">
+            <div class="container">
+
+                <!-- Heading Block -->
+                <div class="heading text-center"><span>Placer de Elección</span>
+                    <h3>Orden de Pizza</h3>
+                    <hr>
+                    <i class="fa fa-bookmark-o"></i></div>
+
+             
+<script type="text/javascript">
+   
+    $(document).ready(function(){
+    	// Call Smart Cart    	
+  		$('#SmartCart').smartCart();
+		});
+</script>
+
+<form action='{% url "client:client_order_create" %}' method="post">
+<!-- Smart Cart HTML Starts -->
+{% csrf_token %}
+<div id="SmartCart" class="scMain">
+
+{% for pizza in pizzas %}
+
+    <input type="hidden" pimage="{{ pizza.pizza_base.image.url }}" pprice="{{ pizza.price }}" pdesc="{{ pizza.pizza_base.description }}" pcategory="{{ pizza.size }}" pname="{{ pizza.pizza_base.name }}" pid="{{ pizza.id }}">
+                      
+{% endfor %}
+</div>
+<!-- Smart Cart HTML Ends -->
+</form>
+                <div>
+        </section>
+
+
+{% endblock %}
+
+
+
