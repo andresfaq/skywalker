@@ -82,8 +82,14 @@
                             <option>FR</option>
                         </select>
                     </li>
+<<<<<<< Updated upstream
                     <li><a href="login.html">Acceder</a></li>
                     <li><a href="#.">Registrese</a></li>
+=======
+                    <li><a href="{% url 'login' %}">Acceder</a></li>
+                    <li><a href="{% url 'account_signup' %}">Registrese</a></li>
+                    <li><a href="{% url "client:client_history"  %}">History</a></li>
+>>>>>>> Stashed changes
                 </ul>
             </div>
         </div>
