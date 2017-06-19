@@ -4,24 +4,45 @@
 
 {% block body %}
 
+<h1>Detail Order</h1>
+
 <div>
       <table class="table table-striped">
           <tr>
-              <td>Name</td>
-              <td>Price</td>
-              <td>Size</td>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Total</th>
           </tr>
     
-{% for pizza in sale.pizzas.all %}
+{% for order in sale.order_set.all %}
 <tr>
- <td>{{ pizza.pizza_base.name }}</td>   
- <td>{{ pizza.price }}</td>
- <td>{{ pizza.size }}</td>
+ <td>{{ order.pizza.pizza_base.name }}</td>   
+ <td>{{ order.pizza.price }}</td>
+ <td>{{ order.pizza.size }}</td>
+ <td>{{ order.quantity }}</td>
+ <td>{{ order.total  }}</td>
 </tr>
 {% endfor %}
+<tr>
+    <th colspan="4" class="tex-center">TOTAL</th>
+    <th> {{ sale.total }}</th>
+</tr>
 
   </table>
 </div>
+
+<div class="text-center">
+    <div class="alert alert-info">
+        Your order will be on the way in a few minutes
+    </div>
+    <br><br>
+    <a href="{% url "client:client_index"  %}" class="btn btn-round btn-dark btn-small">Come Back</a>
+</div>
+
+<br>
+<br>
 
 {% endblock %}
 
