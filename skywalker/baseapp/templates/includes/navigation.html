@@ -32,7 +32,7 @@
     -->
     <ul>
       <li>
-        <a href="#">{{ request.session.user_role|capfirst }}</a>
+        <a href="#">role {{ request.session.user_role|capfirst }}</a>
       </li>
     </ul>
     {% if request.session.user_role  == "client" %}

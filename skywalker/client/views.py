@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from baseapp.models import Pizza, Sale, Order
 from accounts.models import Employee
-# from accounts.models import CustomUser as User
-from django.contrib.auth import get_user_model as User
+from accounts.models import CustomUser as User
+#from django.contrib.auth import get_user_model as User
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
@@ -26,12 +26,13 @@ def order(request):
 @login_required()
 def order_create(request):
     if request.method == 'POST':
-        client = User.objects.get(id=user.id)  
+        client = request.user  
         pizzas_data = request.POST.getlist('products_selected[]')
         sale_create = Sale(
             client=client,
             date=datetime.now()
         )
+        sale_create.save()
         total_global = 0
         for string in pizzas_data:
             identificator, quantity_number = string.split('|')
@@ -50,7 +51,7 @@ def order_create(request):
 ## vista usada para mostrar el historial de ventas
 @login_required()
 def history(request):
-    client = request.user.id
+    client = request.user
     sales = Sale.objects.all().filter(client_id=client.id).order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
     
@@ -59,5 +60,4 @@ def order_cancel(request, id):
     sale = Sale.objects.get(pk=id);
     sale.status = "CA";
     sale.save();
-    sales = Sale.objects.all().filter().order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
-    return render(request, 'client/history.html', {'sales': sales})
+    return redirect('client:client_history')
