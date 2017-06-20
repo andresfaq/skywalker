@@ -6,6 +6,7 @@ from client.views import (
     order_cancel,
     history
 )
+from django.views.generic import TemplateView
 
 urlpatterns = [
      url(r'^$', index, name='client_index'),
@@ -13,5 +14,7 @@ urlpatterns = [
      url(r'^order/create/$', order_create, name='client_order_create'),
      url(r'^history/$', history, name='client_history'),
      url(r'^order/cancel/(?P<id>\d+)$', order_cancel, name='client_order_cancel'),
-
+    
+    # bryan: temporal
+    url(r'^temp/$', TemplateView.as_view(template_name="client/base_purchases.html"), name='temp'),
 ]
