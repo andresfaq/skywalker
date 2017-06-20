@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
 from accounts.views import login_view
-
 from baseapp.views import IndexView
 
 
