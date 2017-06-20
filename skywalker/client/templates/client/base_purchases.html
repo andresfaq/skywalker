@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="M_Adnan">
+    <title>Pizza SkyWalker</title>
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="{% static "client/rs-plugin/css/settings.css" %}" media="screen"/>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "client/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "client/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "client/css/ionicons.min.css" %}" rel="stylesheet">
+    <link href="{% static "client/css/main.css" %}" rel="stylesheet">
+    <link href="{% static "client/css/style.css" %}" rel="stylesheet">
+    <link href="{% static "client/css/responsive.css" %}" rel="stylesheet">
+
+    <!-- JavaScripts -->
+    <script src="{% static "client/js/modernizr.js" %}"></script>
+
+    <!-- Online Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,600,600italic,700italic,100'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+{% block javascript %}
+<script src="{% static "client/js/jquery-1.11.3.min.js" %}"></script>
+<script src="{% static "client/js/bootstrap.min.js" %}"></script>
+<script src="{% static "client/js/own-menu.js" %}"></script>
+<script src="{% static "client/js/owl.carousel.min.js" %}"></script>
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.t.min.js" %}"></script>
+<script type="text/javascript" src="{% static "client/rs-plugin/js/jquery.tp.min.js" %}"></script>
+<script src="{% static "client/js/main.j" %}s"></script>
+
+<!-- Begin Map Script-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src="{% static "client/js/map.js" %}"></script>
+{% endblock %}
+
+
+</head>
+<body>
+
+<!-- Wrap -->
+<div id="wrap">
+
+    <!-- Top Bar -->
+    <div class="top-bar tri-white-bottom">
+        <div class="container">
+
+            <!-- Pull Left -->
+            <span class="numb">Pedir a domicilio (+572) 123-456-7890</span>
+            <!-- Social Icons -->
+            <div class="social"><a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i
+                    class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-instagram"></i></a></div>
+            <span class="time-ta">Abrimos desde las 10:00am - 11:00pm</span>
+
+            <!-- Pull Right -->
+            <div class="pull-right">
+                <ul class="login-info">
+                    <li>
+                        <select class="selectpicker">
+                            <option>ES</option>
+                            <option>FR</option>
+                        </select>
+                    </li>
+                    <li><a href="{% url 'login' %}">Acceder</a></li>
+                    <li><a href="{% url 'account_signup' %}">Registrese</a></li>
+                    <li><a href="{% url "client:client_history"  %}">History</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% block body %}
+    <!-- header -->
+    
+
+    <!--======= HOME MAIN SLIDER =========-->
+    
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Pizza Menu -->
+
+        <!-- Our Restaurant -->
+        <section class="inside-resturant tri-white-top padding-top-25 padding-bottom-20">
+            <div class="container">
+
+                <!-- Heading Block -->
+                <div class="heading text-center"><span>{{ title_heading }}</span>
+                    <hr>
+                    <i class="fa fa-bookmark-o"></i></div>
+
+                <!-- Resturant Img -->
+                
+
+                <!-- Intro Text -->
+                <div class="col-md-7 center-block">
+                    <div class="about-text text-center">
+                        <h1>from<br>
+                            our <span>hearts</span></h1>
+                        <p>We love Italy, we love italian food. Donec venenatis, turpis vel hendrerit interdum, dui
+                            ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus
+                            aliquet, elit magna vulputate. Bon Appetit!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        
+        <!-- Conatct Us -->
+        
+        <!-- MAP -->
+
+    </div>
+
+{% endblock %}
+    <!-- FOOTER -->
+    
+    <!-- RIGHTS -->
+    <section class="rights tri-white-top" style="position:fixed; left:0px; bottom:0px;">
+        <div class="container">
+            <p>Copyright 2017 Pizza Mia. All rights reserved for SaaS Universidad del Valle
+
+            </p>
+        </div>
+    </section>
+</div>
+
+
+</body>
+</html>
