@@ -32,7 +32,8 @@
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800' rel='stylesheet' type='text/css'>
 
-
+    {% block head %}
+    {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -96,24 +97,27 @@
     <!--======= HOME MAIN SLIDER =========-->
     
     <!-- Content -->
-    <div id="content">
+    <div id="">
 
         <!-- Pizza Menu -->
 
         <!-- Our Restaurant -->
         <section class="inside-resturant tri-white-top padding-top-25 padding-bottom-20">
             <div class="container">
+                <!--<div class="heading text-center"><span>{{ title }}</span>-->
+                <!--    <hr>-->
+                <!--    <i class="fa fa-bookmark-o"></i>-->
+                <!--</div>-->
+            
+                <div class="center-block">
+                    {% block content %}
 
                 <!-- Heading Block -->
-                <div class="heading text-center"><span>{{ title_heading }}</span>
-                    <hr>
-                    <i class="fa fa-bookmark-o"></i></div>
 
                 <!-- Resturant Img -->
                 
 
                 <!-- Intro Text -->
-                <div class="col-md-7 center-block">
                     <div class="about-text text-center">
                         <h1>from<br>
                             our <span>hearts</span></h1>
@@ -121,6 +125,7 @@
                             ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus
                             aliquet, elit magna vulputate. Bon Appetit!</p>
                     </div>
+                    {% endblock %}
                 </div>
             </div>
         </section>

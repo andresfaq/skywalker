@@ -48,6 +48,8 @@ class LoginView(TemplateView):
                 else:
                     # Redirect to a success page.
                     login(request, user)
+                    msg = "You are logged in as %s" % user.email
+                    messages.success(request, msg)
                     if hasattr(user, "employee"):
                         return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
                     else:
