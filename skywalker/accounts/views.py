@@ -15,7 +15,7 @@ from django.views.generic import (DeleteView, ListView, UpdateView, CreateView,
     TemplateView)
 
 # local
-from .models import Employee, Client
+from .models import Employee
 from .forms import EmployeeForm, MyUserCreationForm
 
 
@@ -27,10 +27,10 @@ class LoginView(TemplateView):
         user = request.user
         #Si el usuario esta autenticado, se redirecciona al index
         if user.is_authenticated() and not user.is_staff and user.is_active:
-            if hasattr(user, "client"):
-                return redirect('client:client_index')
-            else:
+            if hasattr(user, "employee"):
                 return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
+            else:
+                return redirect('client:client_index')
         # SI No esta autenticado o esta autenticado como admin
         else:
             logout(request)
@@ -48,10 +48,10 @@ class LoginView(TemplateView):
                 else:
                     # Redirect to a success page.
                     login(request, user)
-                    if hasattr(user, "client"):
-                        return redirect('client:client_index')
-                    else:
+                    if hasattr(user, "employee"):
                         return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
+                    else:
+                        return redirect('client:client_index')
             else:
                 # Return a 'disabled account' error message
                 return redirect('account_inactive')

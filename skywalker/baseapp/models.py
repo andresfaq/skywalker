@@ -1,5 +1,6 @@
 from django.db import models
-from accounts.models import Employee, Client
+from accounts.models import CustomUser as Client
+from accounts.models import Employee
 
 # Ingredient Class
 class Ingredient(models.Model):
@@ -89,7 +90,7 @@ class Order(models.Model):
         verbose_name_plural = "Orders"
 
     pizza = models.ForeignKey(Pizza)
-    sale = models.ForeignKey(Sale)
+    sale = models.ForeignKey(Sale, null=True)
     quantity = models.PositiveIntegerField(null=True)
     note = models.CharField(max_length=1000, null=True, blank=False)
     total = models.PositiveIntegerField(null=True)
