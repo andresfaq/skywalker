@@ -28,7 +28,7 @@ class LoginView(TemplateView):
         #Si el usuario esta autenticado, se redirecciona al index
         if user.is_authenticated() and not user.is_staff and user.is_active:
             if hasattr(user, "employee"):
-                return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
+                return redirect('index') # TODO: cambiar por vista de empleado
             else:
                 return redirect('client:client_index')
         # SI No esta autenticado o esta autenticado como admin
@@ -51,7 +51,7 @@ class LoginView(TemplateView):
                     msg = "You are logged in as %s" % user.email
                     messages.success(request, msg)
                     if hasattr(user, "employee"):
-                        return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
+                        return redirect('index') # TODO: cambiar por vista de empleado
                     else:
                         return redirect('client:client_index')
             else:

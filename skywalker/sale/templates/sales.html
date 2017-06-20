@@ -1,14 +1,12 @@
-{% extends 'client/base_purchases.html' %}
+{% extends 'layout_list.html' %} 
 
 {% load static %}
 
 {% block content %}
-
-<h1 class="text-center">Sale History</h1>
-
 <div style="heigth: 500px">
       <table class="table table-striped">
           <tr>
+              <th>Client</th>
               <th>Date</th>
               <th>Total</th>
               <th class="text-center">Status</th>
@@ -17,14 +15,17 @@
     
 {% for sale in sales %}
 <tr>
+ <td>{{ sale.client }}</td>
  <td>{{ sale.date }}</td>   
  <td><b>${{ sale.total }}</b></td>
  <td class="text-center"> {% if sale.status == "PE" %} PENDING {% elif sale.status  == "CA" %} CANCELED  {% else %} DONE {% endif %}</td>
  <td class="text-center"> 
  {% if sale.status == "PE" %}
- <a class=" btn-default" href="{% url "client:client_order_cancel" sale.id  %}"><i class="fa fa-close"></i> Cancel </a>
+ <a class="btn btn-success" href="{% url "sale:sale_approve" sale.id  %}"><i class="fa fa-check"></i></a>
+ <a class="btn btn-danger" href="{% url "sale:sale_cancel" sale.id  %}"><i class="fa fa-close"></i></a>
+
  {% else %}
- Done
+ --
  {% endif %}
  </td>
  
@@ -34,14 +35,4 @@
   </table>
 </div>
 
-<div class="text-center">
-    <a href="{% url "client:client_index"  %}" class="btn btn-round btn-dark btn-small">Come Back</a>
-</div>
-
-<br/>
-<br/>
-
-{% endblock %}
-
-
-
+    {% endblock %}

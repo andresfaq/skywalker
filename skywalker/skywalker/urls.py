@@ -21,6 +21,8 @@ from django.views.generic import TemplateView
 
 from accounts.views import login_view
 
+from baseapp.views import IndexView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -37,12 +39,15 @@ urlpatterns = [
     url(r'^google9f65af6041bf39b4.html$',
         TemplateView.as_view(template_name="google9f65af6041bf39b4.html")),
 
+    url(r'^$', IndexView.as_view(), name="index"),
     # App client - compras online
     url(r'^', include('client.urls', namespace='client')),
     
     # bryan: temporal
     url(r'^temp/$', TemplateView.as_view(template_name="client/base_purchases.html"), name='temp'),
-
+    
+    # App sale - ventas y despachos de pedidos
+    url(r'^sale/', include('sale.urls', namespace='sale')),
 ]
 
 ## Se agregan este codigo para poder acceder a la imagen de la pizza que se encuentra
