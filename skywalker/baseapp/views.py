@@ -21,11 +21,12 @@ class IndexView(View):
                 user_role = "client"
                 # redirect to main page of client <-----------------------------
             request.session["user_role"] = user_role
-            return render(request, "base.html")
+            return redirect('login')
+
         else:
             logout(request)
             # return redirect('accounts:login')
-            return render(request, "index.html")
+            return redirect('client:client_index')
 
 
 index = IndexView.as_view()

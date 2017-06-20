@@ -30,6 +30,7 @@ def order_create(request):
             client=client,
             date=datetime.now()
         )
+        sale_create.save()
         total_global = 0
         for string in pizzas_data:
             identificator, quantity_number = string.split('|')

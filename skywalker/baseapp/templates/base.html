@@ -99,7 +99,8 @@ Use search to find needed section.
         * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
     -->
 <body class="fixed-header fixed-ribbon {{style}}">
-
+{% block javascript %}
+{% endblock %}
 <!-- #HEADER -->
 {% include "header.html" %}
 <!-- END HEADER -->
@@ -206,6 +207,8 @@ Use search to find needed section.
 
 {% endblock %}
 
+{% block javascripts %}
+
 <!-- #PLUGINS -->
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -222,6 +225,7 @@ Use search to find needed section.
     }
 </script>
 
+{% endblock %}
 <!-- IMPORTANT: APP CONFIG -->
 <script src="{% static "baseapp/js/app.config.js" %}"></script>
 
@@ -275,9 +279,6 @@ Use search to find needed section.
 
 {% block reportImports %}
 {% endblock %}
-
-
-
 
 <script type="text/javascript">
     // DO NOT REMOVE : GLOBAL FUNCTIONS!

@@ -21,6 +21,8 @@ from django.views.generic import TemplateView
 
 from accounts.views import login_view
 
+from baseapp.views import IndexView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -37,8 +39,12 @@ urlpatterns = [
     url(r'^google9f65af6041bf39b4.html$',
         TemplateView.as_view(template_name="google9f65af6041bf39b4.html")),
 
+    url(r'^$', IndexView.as_view(), name="index"),
     # App client - compras online
     url(r'^', include('client.urls', namespace='client')),
+    
+    # App sale - ventas y despachos de pedidos
+    url(r'^sale/', include('sale.urls', namespace='sale')),
 
 ]
 
