@@ -56,7 +56,6 @@
 <script src="{% static "client/js/map.js" %}"></script>
 {% endblock %}
 
-
 </head>
 <body>
 
@@ -68,7 +67,7 @@
         <div class="container">
 
             <!-- Pull Left -->
-            <span class="numb">Pedir a domicilio (+572) 123-456-7890</span>
+            <span class="numb">Domicilio (+57) 123-456-7890</span>
             <!-- Social Icons -->
             <div class="social"><a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i
                     class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-instagram"></i></a></div>
@@ -83,9 +82,14 @@
                             <option>FR</option>
                         </select>
                     </li>
-                    <li><a href="{% url 'login' %}">Acceder</a></li>
-                    <li><a href="{% url 'account_signup' %}">Registrese</a></li>
-                    <li><a href="{% url "client:client_history"  %}">History</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="#"><small>{{ user.email }}</small></a></li>
+                        <li><a href="{% url "client:client_history"  %}">History</a></li>
+                        <li><a href="{% url 'accounts:logout' %}">Cerrar sesión</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Acceder</a></li>
+                        <li><a href="{% url 'account_signup' %}">Registrese</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -137,11 +141,13 @@
         <!-- MAP -->
 
     </div>
+    
 
-{% endblock %}
+    {% endblock %}
     <!-- FOOTER -->
     
     <!-- RIGHTS -->
+    <div style="padding: 0 0 100px; position: relative;">
     <section class="rights tri-white-top" style="position:fixed; left:0px; bottom:0px;">
         <div class="container">
             <p>Copyright 2017 Pizza Mia. All rights reserved for SaaS Universidad del Valle
@@ -149,6 +155,7 @@
             </p>
         </div>
     </section>
+    </div>
 </div>
 
 

@@ -40,6 +40,17 @@
       </li>
     </ul>
   </li>
+  <li class="{% if namespace == 'sale' %}open{% endif %}">
+    <a href="#"><i class="fa fa-lg fa-fw fa-pie-chart"></i> <span class="menu-item-parent">Sales</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+    <ul>
+      <li class="{% if url_name == 'sale_order' %}active{% endif %}">
+        <a href="{% url 'sale:sale_order' %}">Order</a>
+      </li>
+      <li class="{% if url_name == 'sale_sales' %}active{% endif %}">
+        <a href="{% url 'sale:sale_sales' %}">Sales</a>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 

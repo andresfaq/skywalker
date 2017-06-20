@@ -8,7 +8,7 @@ from client.views import (
 )
 
 urlpatterns = [
-     url(r'^$', index, name='client_index'),
+     url(r'^index/$', index, name='client_index'),
      url(r'^order/$', order, name='client_order'),
      url(r'^order/create/$', order_create, name='client_order_create'),
      url(r'^history/$', history, name='client_history'),
