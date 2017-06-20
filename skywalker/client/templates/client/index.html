@@ -82,11 +82,17 @@
                             <option>FR</option>
                         </select>
                     </li>
-                    <li><a href="{% url 'login' %}">Acceder</a></li>
-                    <li><a href="{% url 'account_signup' %}">Registrese</a></li>
-                    <li><a href="{% url "client:client_history"  %}">History</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="#">{{ user.email }}</a></li>
+                        <li><a href="{% url 'accounts:logout' %}">Cerrar sesión</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Acceder</a></li>
+                        <li><a href="{% url 'account_signup' %}">Registrese</a></li>
+                        <li><a href="{% url "client:client_history"  %}">History</a></li>
+                    {% endif %}
                 </ul>
             </div>
+            
         </div>
     </div>
 {% block body %}
