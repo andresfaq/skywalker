@@ -27,7 +27,10 @@ class LoginView(TemplateView):
         user = request.user
         #Si el usuario esta autenticado, se redirecciona al index
         if user.is_authenticated() and not user.is_staff and user.is_active:
-            return redirect('index')
+            if hasattr(user, "client"):
+                return redirect('client:client_index')
+            else:
+                return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
         # SI No esta autenticado o esta autenticado como admin
         else:
             logout(request)
@@ -45,7 +48,10 @@ class LoginView(TemplateView):
                 else:
                     # Redirect to a success page.
                     login(request, user)
-                    return redirect('index')
+                    if hasattr(user, "client"):
+                        return redirect('client:client_index')
+                    else:
+                        return redirect('accounts:user_list') # TODO: cambiar por vista de empleado
             else:
                 # Return a 'disabled account' error message
                 return redirect('account_inactive')
