@@ -97,12 +97,3 @@ class Employee(models.Model):
     class Meta:
         verbose_name = 'Employee'
         verbose_name_plural = 'Employees'
-
-
-# DO: delete this
-class Client(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Client'
-        verbose_name_plural = 'Clients'

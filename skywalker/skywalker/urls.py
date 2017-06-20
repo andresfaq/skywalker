@@ -39,6 +39,9 @@ urlpatterns = [
 
     # App client - compras online
     url(r'^', include('client.urls', namespace='client')),
+    
+    # bryan: temporal
+    url(r'^temp/$', TemplateView.as_view(template_name="client/base_purchases.html"), name='temp'),
 
 ]
 

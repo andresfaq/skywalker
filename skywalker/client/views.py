@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from baseapp.models import Pizza, Sale, Order
-from accounts.models import Employee, Client
+from accounts.models import Employee
+# from accounts.models import CustomUser as User
+from django.contrib.auth import get_user_model as User
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
@@ -24,7 +26,7 @@ def order(request):
 @login_required()
 def order_create(request):
     if request.method == 'POST':
-        client = Client.objects.get(id=request.user.id)  
+        client = User.objects.get(id=user.id)  
         pizzas_data = request.POST.getlist('products_selected[]')
         sale_create = Sale(
             client=client,
@@ -48,7 +50,7 @@ def order_create(request):
 ## vista usada para mostrar el historial de ventas
 @login_required()
 def history(request):
-    client = Client.objects.get(id=request.user.id)  
+    client = request.user.id
     sales = Sale.objects.all().filter(client_id=client.id).order_by('-id');##TODO importante aqui se debe buscar por el cliente logueado
     return render(request, 'client/history.html', {'sales': sales})
     
