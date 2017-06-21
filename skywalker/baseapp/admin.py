@@ -5,3 +5,4 @@ from baseapp import models
 
 admin.site.register(models.Ingredient)
 admin.site.register(models.PizzaBase)
+admin.site.register(models.Pizza)

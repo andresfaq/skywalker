@@ -8,7 +8,7 @@ from django.contrib.auth.hashers import make_password
 
 
 # Ingredient Factory
-class IngredientFactory(factory.Factory):
+class IngredientFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Ingredient
 
@@ -18,7 +18,7 @@ class IngredientFactory(factory.Factory):
 
 
 # PizzaBase Factory
-class PizzaBaseFactory(factory.Factory):
+class PizzaBaseFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.PizzaBase
 
@@ -37,3 +37,11 @@ class PizzaBaseFactory(factory.Factory):
             for ingredient in extracted:
                 self.aditions.add(ingredient)
 
+# Pizza Factory
+class PizzaFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = models.Pizza
+
+    pizza_base = factory.Iterator(models.PizzaBase.objects.all())
+    price = factory.fuzzy.FuzzyInteger(1000, 9999)
+    size = factory.fuzzy.FuzzyChoice(['SM', 'MD', 'LG', 'XL'])
