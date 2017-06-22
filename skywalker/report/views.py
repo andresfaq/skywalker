@@ -42,7 +42,6 @@ def most_sold_ingredients(request):
     consulta = Order.objects.values('pizza__pizza_base__aditions__name')\
         .annotate(ingredient_amount = Sum('quantity'))\
         .order_by('-ingredient_amount')
-    #quantity
     ctx = {'consulta': consulta}
     return render(request, template_name, ctx)
 
