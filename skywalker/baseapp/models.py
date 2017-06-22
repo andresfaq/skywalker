@@ -74,7 +74,7 @@ class Sale(models.Model):
     
     salesman = models.ForeignKey(Employee, blank=True, null=True)
     client = models.ForeignKey(Client,  blank=True, null=True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(blank=True, null=True)
     total = models.PositiveIntegerField(null=True)
 
     status = models.CharField(
