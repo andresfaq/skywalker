@@ -39,21 +39,21 @@ def most_sold_pizzas (request):
 def most_sold_ingredients(request):
     model = Ingredient
     template_name = "reports/most_sold_ingredients.html"
-    title_content = "Most Sold Extra Ingredients"
-    """
-    consulta = Extra.objects.values('ingredient__name')\
-        .annotate(ingredient_amount=Sum('amount'))\
-        .order_by('ingredient')
-        """
-    """
-    consulta = Extra.objects.values('ingredient__name')\
-        .annotate(ingredient_amount=Sum('amount'))\
-        .order_by('-ingredient_amount')"""
-    consulta = ""
-
+    consulta = Order.objects.values('pizza__pizza_base__aditions__name')\
+        .annotate(ingredient_amount = Sum('quantity'))\
+        .order_by('-ingredient_amount')
+    #quantity
     ctx = {'consulta': consulta}
     return render(request, template_name, ctx)
 
+def sale_by_employee(request):
+    model = Ingredient
+    template_name = "reports/sale_by_employee.html"
+    consulta = Sale.objects.values('salesman__user__first_name')\
+        .annotate(ingredient_amount = Count('salesman__user__first_name'))\
+        .order_by('-ingredient_amount')
+    ctx = {'consulta': consulta}
+    return render(request, template_name, ctx)
 
 def llenarDB ():
     #list_admitidos = lista_admitidos.objects.filter(carrera=carrera).order_by('-puntaje')[:cupos]
